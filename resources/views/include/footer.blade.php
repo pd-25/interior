@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Write to us :</h5>
-                                    <p>iinteriofy@gmail.com</p>
+                                    <p> iinteriofy@gmail.com</p>
                                 </div>
                             </li>
                             <li>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Speak with us :</h5>
-                                    <p>+91 999999999</p>
+                                    <p>+91 8130529961</p>
                                 </div>
                             </li>
                         </ul>
