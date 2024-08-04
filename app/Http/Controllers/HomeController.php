@@ -221,7 +221,7 @@ class HomeController extends Controller
     {
         $request->validate([
             'services' => 'required',
-            'budget' => 'required|numeric',
+            'budget' => 'required',
             'pincode' => 'required|numeric',
             'date' => 'required',
             'time' => 'required',

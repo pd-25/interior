@@ -111,23 +111,23 @@
                                                         @if ($category== 'office')
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1" id="number_of_cabins" class="form-control" placeholder="Number of Cabins"  name="number_of_cabins">
+                                                                    <input type="text" id="number_of_cabins" class="form-control" placeholder="Number of Cabins"  name="number_of_cabins">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1"  id="number_of_worksations" class="form-control" placeholder="Number of Worksations"  name="number_of_worksations">
+                                                                    <input type="text"  id="number_of_worksations" class="form-control" placeholder="Number of Worksations"  name="number_of_worksations">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1"  id="total_carpet_area" class="form-control" placeholder="Total Carpet Area"  name="total_carpet_area">
+                                                                    <input type="text"  id="total_carpet_area" class="form-control" placeholder="Total Carpet Area"  name="total_carpet_area">
                                                                 </div>
                                                             </div>
                                                         @elseif($category== 'retail')
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" id="total_area" class="form-control" placeholder="Total Area"  name="total_area">
+                                                                    <input type="text" id="total_area" class="form-control" placeholder="Total Area"  name="total_area">
                                                                 </div>
                                                             </div>
                                                         @else
@@ -254,7 +254,7 @@
                                                                         <div class="icon">
                                                                             <img class="img-fluid" src="images/bathroom.png" alt="">
                                                                         </div>
-                                                                        <h3>bathroom</h3>
+                                                                        <h3>Bathroom</h3>
                                                                     </label>
                                                                 </div>
 
@@ -265,7 +265,7 @@
                                                                         <div class="icon">
                                                                             <img class="img-fluid" src="images/model.png" alt="">
                                                                         </div>
-                                                                        <h3> design and plan</h3>
+                                                                        <h3> Design and plan</h3>
                                                                     </label>
                                                                 </div>
 
@@ -318,7 +318,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/plan.png" alt="">
                                                     </div>
-                                                    <h3>architecture</h3>
+                                                    <h3>Architecture</h3>
                                                 </label>
                                             </div>
 
@@ -340,7 +340,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/lighting.png" alt="">
                                                     </div>
-                                                    <h3>design</h3>
+                                                    <h3>Design</h3>
                                                 </label>
                                             </div>
 
@@ -351,7 +351,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/plumbing.png" alt="">
                                                     </div>
-                                                    <h3>electrical</h3>
+                                                    <h3>Electrical</h3>
                                                 </label>
                                             </div>
                                             <div class="select">
@@ -360,7 +360,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/sketch.png" alt="">
                                                     </div>
-                                                    <h3>contractor</h3>
+                                                    <h3>Contractor</h3>
                                                 </label>
                                             </div>
 
@@ -371,7 +371,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/mop.png" alt="">
                                                     </div>
-                                                    <h3>civil & structural</h3>
+                                                    <h3>Civil & structural</h3>
                                                 </label>
                                             </div>
 
@@ -381,7 +381,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/painting33.png" alt="">
                                                     </div>
-                                                    <h3>painting</h3>
+                                                    <h3>Painting</h3>
                                                 </label>
                                             </div>
 
@@ -391,7 +391,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/plumbing.png" alt="">
                                                     </div>
-                                                    <h3>plumbing</h3>
+                                                    <h3>Plumbing</h3>
                                                 </label>
                                             </div>
 
@@ -402,7 +402,7 @@
                                                     <div class="icon">
                                                         <img class="img-fluid" src="images/furniture.png" alt="">
                                                     </div>
-                                                    <h3>furniture & Pictures</h3>
+                                                    <h3>Furniture & Pictures</h3>
                                                 </label>
                                             </div>
                                         </ul>
@@ -427,7 +427,7 @@
                                         <div class="row mb-2">
                                             <div class="col-lg-6">
                                                 <div class="form-group">
-                                                    <input type="number" id="budget" class="form-control"
+                                                    <input type="text" id="budget" class="form-control"
                                                         placeholder="Budget (in lakh)" required name="budget">
                                                 </div>
                                             </div>
