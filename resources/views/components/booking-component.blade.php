@@ -209,23 +209,23 @@
                                                         @if ($category== 'office')
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1" id="number_of_cabins_renovation" class="form-control" placeholder="Number of Cabins"  name="number_of_cabins_renovation">
+                                                                    <input type="text" id="number_of_cabins_renovation" class="form-control" placeholder="Number of Cabins"  name="number_of_cabins_renovation">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1"  id="number_of_worksations_renovation" class="form-control" placeholder="Number of Worksations"  name="number_of_worksations_renovation">
+                                                                    <input type="text"  id="number_of_worksations_renovation" class="form-control" placeholder="Number of Worksations"  name="number_of_worksations_renovation">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" min="1"  id="total_carpet_area_renovation" class="form-control" placeholder="Total Carpet Area"  name="total_carpet_area_renovation">
+                                                                    <input type="text"  id="total_carpet_area_renovation" class="form-control" placeholder="Total Carpet Area"  name="total_carpet_area_renovation">
                                                                 </div>
                                                             </div>
                                                         @elseif($category== 'retail')
                                                             <div class="col-lg-12 mb-2">
                                                                 <div class="form-group">
-                                                                    <input type="number" id="total_carpet_area" class="form-control" placeholder="Total Area"  name="total_area_renovation">
+                                                                    <input type="text" id="total_carpet_area" class="form-control" placeholder="Total Area"  name="total_area_renovation">
                                                                 </div>
                                                             </div>
                                                         @else
