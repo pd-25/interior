@@ -225,7 +225,7 @@ class HomeController extends Controller
             'pincode' => 'required|numeric',
             'date' => 'required',
             'time' => 'required',
-            'expert_id' => 'required',
+            // 'expert_id' => 'required',
         ]);
         
         $timestampPart = substr(time(), -4);
@@ -274,7 +274,8 @@ class HomeController extends Controller
         $booking->total_area = $request->total_area;
         $booking->total_area_renovation = $request->total_area_renovation;
 
-        $booking->expert_id = $request->expert_id;
+        // $booking->expert_id = $request->expert_id;
+        $booking->expert_id = 0;
         $city = explode("-",$request->city);
         $booking->district = $city[0];
         $booking->city = $city[1];
