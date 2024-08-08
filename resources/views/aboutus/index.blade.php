@@ -6,10 +6,10 @@
             <div class="col-lg-6">
                 <div class="about-info">
                     <p class="text-size-all-page">At “I InterioFY”, we bridge the gap between dream spaces and reality. We're a revolutionary tech platform based in India that connects you with a curated network of elite interior designers, experienced architects, and reliable contractors, all under one user-friendly roof.</p>
-                    <h4>More Than Just a marketplace: An ultimate haven for interiors.</h4>
+                    <h4>More Than Just a marketplace: An ultimate heaven for interiors.</h4>
                     <p class="text-size-all-page">We go beyond simply connecting you with service providers. “I InterioFY” fosters a conducive environment for business growth and ensures our dream space come true. A place where creativity thrives and convenience reigns supreme. Designers, architects, and contractors seamlessly interact on our platform, ensuring your project benefits from a holistic and unified vision.</p>
                     <h4>Transforming Every Space, Big or Small</h4>
-                    <p class="text-size-all-page">Whether you're envisioning a tranquil residential haven, a dynamic commercial space, or a captivating retail environment, “I InterioFY” empowers you to bring your unique vision to life. We cater to a wide range of projects and budgets, ensuring everyone has access to exceptional design and execution expertise.</p>
+                    <p class="text-size-all-page">Whether you're envisioning a tranquil residential heaven, a dynamic commercial space, or a captivating retail environment, “I InterioFY” empowers you to bring your unique vision to life. We cater to a wide range of projects and budgets, ensuring everyone has access to exceptional design and execution expertise.</p>
                 </div>
             </div>
             <div class="col-lg-6">

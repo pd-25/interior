@@ -422,7 +422,7 @@
                     setTimeout(function() {
                         Swal.fire({
                             title: "Success!",
-                            html: `<b>Your Booking ID is: ${bookingID}</b><br>Please copy the booking ID or take a screenshots of it.`,
+                            html: `Thank you for submitting your query. Someone from our team will get in touch with you shortly<br><b>Your Booking ID is: ${bookingID}</b>.`,
                             icon: "success"
                         }).then((result) => {
                             if (result.isConfirmed) {

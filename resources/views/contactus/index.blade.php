@@ -51,7 +51,7 @@
                         <i class="fa fa-phone ff20" aria-hidden="true"></i>
                     </div>
                     <div class="col-md-12 ps-0 fs-6 pt-1 mt-3 mb-4 fw-bolder">
-                        <h3 class="cad">  +91 8130529961 <br>
+                        <h3 class="cad">  +91 8826036989 <br>
                             </h3>
 
                     </div>

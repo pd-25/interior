@@ -380,14 +380,14 @@
                         <div class="title_container">
                             <h2>Book Your Free Consultation </h2>
                             @if (Session::has('success'))
-                                <h2 class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                                     {{ Session::get('success') }}
-                                </h2>
+                                </div>
                             @endif
                             @if (Session::has('error'))
-                                <h2 class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                                     {{ Session::get('error') }}
-                                </h2>
+                                </div>
                             @endif
                         </div>
                         <div class="row">

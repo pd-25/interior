@@ -123,122 +123,123 @@
                 </div>
                 <!-- Content for About goes here -->
             </div> --}}
-        </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="accordion-menu" id="accordionMenu">
-        <div class="accordion">
-            <!-- Content for Home and About is displayed here -->
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionMenu">
-                <div class="card-body s">
-                    <div class="panel">
-                        <div class="panel-body bio-graph-info">
-                            <h2>Profile</h2>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="bio-row">
-                                        <p><span>Name </span>: {{ @Auth::user()->name }}</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Country </span>: {{ @Auth::user()->country }}</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Birthday</span>:
-                                            {{ date('d M Y',strtotime(@Auth::user()->dob)) }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="bio-row">
-                                        <p><span>Occupation </span>: {{ @Auth::user()->occupation }}</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Email </span>: {{ @Auth::user()->email }}</p>
-                                    </div>
-                                    <div class="bio-row">
-                                        <p><span>Mobile </span>: {{ @Auth::user()->mobile_no }}</p>
-                                    </div>
+            <div class="accordion-menu" id="accordionMenu">
+                <div class="accordion">
+                    <!-- Content for Home and About is displayed here -->
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionMenu">
+                        <div class="card-body s">
+                            <div class="panel">
+                                <div class="panel-body bio-graph-info">
+                                    <h2>Profile</h2>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="bio-row">
+                                                <p><span>Name </span>: {{ @Auth::user()->name }}</p>
+                                            </div>
+                                            <div class="bio-row">
+                                                <p><span>Country </span>: {{ @Auth::user()->country }}</p>
+                                            </div>
+                                            <div class="bio-row">
+                                                <p><span>Birthday</span>:
+                                                    {{ date('d M Y', strtotime(@Auth::user()->dob)) }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="bio-row">
+                                                <p><span>Occupation </span>: {{ @Auth::user()->occupation }}</p>
+                                            </div>
+                                            <div class="bio-row">
+                                                <p><span>Email </span>: {{ @Auth::user()->email }}</p>
+                                            </div>
+                                            <div class="bio-row">
+                                                <p><span>Mobile </span>: {{ @Auth::user()->mobile_no }}</p>
+                                            </div>
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionMenu">
-                <div class="card-body s">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">ServiceId</th>
-                                <th scope="col">Date / Time</th>
-                                <th scope="col">Home Requirements</th>
-                                <th scope="col">Renovation</th>
-                                <th scope="col">Service</th>
-                                <th scope="col">Details</th>
-                                <th scope="col">Partner Details</th>
-                                <th scope="col">Status</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if(!@empty($booking))
-                                @foreach($booking as $item)
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionMenu">
+                        <div class="card-body s">
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ @$item->service_id }}</td>
-                                        <td>
-                                            {{ date('d-M-Y', strtotime(@$item->date)) }}
-                                            <br>
-                                            {{ date('H:i:s', strtotime(@$item->time)) }}
-                                        </td>
-                                        <td>
-                                            <table>
-                                                @if(!@empty($item->renovation))
-                                                    <blade
-                                                        foreach|%20(%20json_decode(%24item-%3Ehome_requirements)%20as%20%24itemII)%0D>
-                                                        <tr>
-                                                            <td>{{ @$itemII }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table>
-                                                @if(!@empty($item->renovation))
-                                                    <blade
-                                                        foreach|%20(%20json_decode(%24item-%3Erenovation)%20as%20%24itemIII)%0D>
-                                                        <tr>
-                                                            <td>{{ @$itemIII }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                            </table>
-                                        </td>
-                                        <td>{{ @$item->service }}</td>
-                                        <td>
-                                            {{ @$item->budget }} <br>
-                                            {{ @$item->pincode }} <br>
-                                            {{ @$item->block }} <br>
-                                            {{ @$item->city }} <br>
-                                            {{ @$item->district }}
-                                        </td>
-                                        <td>
-                                            {{ @$item->partner_details->name }} <br>
-                                            {{ @$item->partner_details->email }} <br>
-                                            {{ @$item->partner_details->mobile_no }}
-                                        </td>
-                                        @if(@$item->status == 0)
-                                            <td style="color: pink;">Inprogress</td>
-                                        @elseif(@$item->status == 1)
-                                            <td style="color: green;">Complete</td>
-                                        @elseif(@$item->status == 2)
-                                            <td style="color: red;">Rejected</td>
-                                        @endif
+                                        <th scope="col">ServiceId</th>
+                                        <th scope="col">Date / Time</th>
+                                        <th scope="col">Home Requirements</th>
+                                        <th scope="col">Renovation</th>
+                                        <th scope="col">Service</th>
+                                        <th scope="col">Details</th>
+                                        <th scope="col">Partner Details</th>
+                                        <th scope="col">Status</th>
+
                                     </tr>
-                                @endforeach
-                            @endif
-                            {{-- <tr>
+                                </thead>
+                                <tbody>
+                                    @if (!@empty($booking))
+                                        @foreach ($booking as $item)
+                                            <tr>
+                                                <td>{{ @$item->service_id }}</td>
+                                                <td>
+                                                    {{ date('d-M-Y', strtotime(@$item->date)) }}
+                                                    <br>
+                                                    {{ date('H:i:s', strtotime(@$item->time)) }}
+                                                </td>
+                                                <td>
+                                                    <table>
+                                                        @if (!empty($item->renovation))
+                                                            @foreach (json_decode($item->home_requirements) as $itemII)
+                                                                <tr>
+                                                                    <td>{{ $itemII }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @endif
+
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table>
+                                                        @if (!empty($item->renovation))
+                                                            @foreach (json_decode($item->home_requirements) as $itemII)
+                                                                <tr>
+                                                                    <td>{{ $itemII }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @endif
+
+                                                    </table>
+                                                </td>
+                                                <td>{{ @$item->service }}</td>
+                                                <td>
+                                                    {{ @$item->budget }} <br>
+                                                    {{ @$item->pincode }} <br>
+                                                    {{ @$item->block }} <br>
+                                                    {{ @$item->city }} <br>
+                                                    {{ @$item->district }}
+                                                </td>
+                                                <td>
+                                                    {{ @$item->partner_details->name }} <br>
+                                                    {{ @$item->partner_details->email }} <br>
+                                                    {{ @$item->partner_details->mobile_no }}
+                                                </td>
+                                                @if (@$item->status == 0)
+                                                    <td style="color: pink;">Inprogress</td>
+                                                @elseif(@$item->status == 1)
+                                                    <td style="color: green;">Complete</td>
+                                                @elseif(@$item->status == 2)
+                                                    <td style="color: red;">Rejected</td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    {{-- <tr>
                                         <td>04 Feb 2024</td>
                                         <td>8:00 AM</td>
                                         <td>Plumbing Work</td>
@@ -253,14 +254,14 @@
                                         <td>Mark</td>
                                         <td>8768624651</td>
                                     </tr> --}}
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 @include('include.footer')

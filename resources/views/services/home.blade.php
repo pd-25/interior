@@ -419,11 +419,21 @@
                 dataType: "json",
                 success: function(response) {
                     // console.log("Success:", response);
-                    var bookingID = "ServiceID" + response.service_id;
+                    const serviceId = response.service_id;
+                    const startsWithNumber = /^\d/.test(serviceId);
+                    let htmL_l = ''; // Changed from const to let
+                    if (startsWithNumber) {
+                        var bookingID = "ServiceID" + serviceId;
+                        htmL_l =
+                            `Thank you for submitting your query. Someone from our team will get in touch with you shortly<br><b>Your Booking ID is: ${bookingID}</b>.`;
+                    } else {
+                        htmL_l = serviceId;
+                    }
+
                     setTimeout(function() {
                         Swal.fire({
                             title: "Success!",
-                            html: `<b>Your Booking ID is: ${bookingID}</b><br>Please copy the booking ID or take a screenshots of it.`,
+                            html: htmL_l,
                             icon: "success"
                         }).then((result) => {
                             if (result.isConfirmed) {
@@ -432,6 +442,7 @@
                             }
                         });
                     }, 2000);
+
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     // Handle errors (e.g., display error message)

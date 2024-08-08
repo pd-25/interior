@@ -489,7 +489,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-sm-12 text-center">
                                         <div class="heading">
-                                            <h2>TALK TO OUR INTERIOFY EXPERTs (FREE OF COST)</h2>
+                                            <h2>Please book your service</h2>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,9 @@
 @include('include.header')
+<style>
+    .major_category{
+        margin-right: 0px !important
+    }
+</style>
 <!-- Office Interior Banner -->
 <div class="interior-banner">
     <div class="interior-banner-slider owl-carousel owl-theme">
@@ -419,6 +424,7 @@
                                         <label for="Individual">Individual</label>
                                     </div>
                                 </div> --}}
+
                                 <div class="mb-4 form-border">
                                     <label for="" class="form-label h6 fw-bold mb-3">Your Line Of Work
                                     </label>
