@@ -92,10 +92,10 @@
                             </div>
                             <ul class="links">
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com">Home</a>
+                                    <a href={{ url("/") }}>Home</a>
                                 </li>
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com/about-us">About Us</a>
+                                    <a href="{{ route("about-us") }}">About Us</a>
                                 </li>
 
                                 <li>
@@ -105,8 +105,12 @@
                                     <a href="/blogs">Blogs</a>
                                 </li>
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com/contact-us">Contact
+                                    <a href="{{ route('contact-us') }}">Contact
                                         Us</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
                                 </li>
 
                             </ul>

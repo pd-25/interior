@@ -53,6 +53,7 @@ Route::get('/partner-with-us', [HomeController::class, 'partner_with_us'])->name
 Route::post('/partner-with-us-form-data', [HomeController::class, 'partner_with_us_form_data'])->name('partnerwithusformdata');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
 
 Route::post('/contact-us', [HomeController::class, 'storeEnquries'])->name('storeEnquries');
 
