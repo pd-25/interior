@@ -84,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="footer_cont ml-5">
                         <div class="footer_links">
                             <div class="ftr_heading">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer_contact">
                         <ul>
                             <li>
@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Corporate Address :</h5>
-                                    <p>UG 06,Mgf Metropolis Mall MG Road Gurgaon,Haryana,122002</p>
+                                    <p class="">UG 06,Mgf Metropolis Mall MG Road Gurgaon,Haryana,122002</p>
                                 </div>
                             </li>
                             <li>
