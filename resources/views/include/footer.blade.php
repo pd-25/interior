@@ -126,7 +126,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Corporate Address :</h5>
-                                    <p>Gurgaon, Haryana, India</p>
+                                    <p>UG 06,Mgf Metropolis Mall MG Road Gurgaon,Haryana,122002</p>
                                 </div>
                             </li>
                             <li>
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Write to us :</h5>
-                                    <p> iinteriofy@gmail.com</p>
+                                    <p> connect@iinteriofy.com</p>
                                 </div>
                             </li>
                             <li>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Speak with us :</h5>
-                                    <p>+91 8130529961</p>
+                                    <p>+91 8826036989</p>
                                 </div>
                             </li>
                         </ul>
