@@ -250,8 +250,8 @@
     </div>
 </section>
 
-{{-- live jabe --}}
-<section class="step_form_sec section-my">
+{{-- journey section web--}}
+<section class="step_form_sec d-none d-md-block section-my">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 text-center">
@@ -332,6 +332,98 @@
         </div>
     </div>
 </section>
+
+{{-- Mobile --}}
+<section class="step_form_sec d-md-none b-xl-none d-xxl-none d-lg-none section-my">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 text-center">
+                <div class="heading">
+                    <h2>Your Journey</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-4 d-flex justify-content-center ">
+            <div class="col-12 col-md-1 d-flex align-items-center justify-content-center">
+                <div class="image-title">
+                </div>
+            </div>
+            <div class="col-12 text-center  col-md-2 d-flex align-items-center justify-content-center">
+                <div class="image-title mb-5">
+                    <img src="{{ asset('images/nk5.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Share your <br> requirement</h4>
+                </div>
+            </div>
+            <div class="col-12 col-md-2  d-flex align-items-center justify-content-center">
+                <div class="image-title">
+                    <img src="{{ asset('images/1.png') }}" alt="Image 1" class="img-fluid nr">
+                </div>
+            </div>
+            <div class="col-12 text-center  col-md-2 d-flex align-items-center justify-content-center">
+                <div class="image-title mb-5">
+                    {{-- <img src="{{ asset('images/nk7.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Fix free <br>consultation call</h4> --}}
+                    <img src="{{ asset('images/nk6.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Choose from <br> recommended partners</h4>
+                </div>
+            </div>
+            <div class="col-12    col-md-2  d-flex align-items-center justify-content-center">
+                <div class="image-title">
+                    <img src="{{ asset('images/1.png') }}" alt="Image 1" class="img-fluid nr">
+                </div>
+            </div>
+            <div class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center">
+                <div class="image-title mb-5">
+                    <img src="{{ asset('images/nk7.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Fix free <br>consultation call</h4>
+                    {{-- <img src="{{ asset('images/nk9.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Partner to quote <br> for execution </h4> --}}
+                </div>
+            </div>
+            <div class="col-12 col-md-1 d-flex align-items-center justify-content-center">
+                <div class="image-title">
+                </div>
+            </div>
+        </div>
+        <div class="row  pt-md-5 d-flex justify-content-end">
+            <div class="col-12 col-md-1 d-flex align-items-center justify-content-center">
+            </div>
+            <div class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center">
+            </div>
+            <div
+                class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center justify-content-md-end">
+                <div class="image-title mb-5">
+                    <img src="{{ asset('images/nk8.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Finalise partner <br> of your choice</h4>
+                    {{-- <img src="{{ asset('images/nk6.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Choose from <br> recommended partners</h4> --}}
+                </div>
+            </div>
+            <div class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center">
+                <div class="image-title">
+                    <img src="{{ asset('images/2.png') }}" alt="Image 1" class="img-fluid r">
+                </div>
+            </div>
+            <div
+                class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center justify-content-md-end">
+                <div class="image-title mb-5">
+                    <img src="{{ asset('images/nk9.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Partner to quote <br> for execution </h4>
+                    {{-- <img src="{{ asset('images/nk8.jpg') }}" alt="Image 1" class="img-fluid mainss">
+                    <h4>Finalise partner <br> of your choice</h4> --}}
+                </div>
+            </div>
+            <div class="col-12 text-center col-md-2 d-flex align-items-center justify-content-center ">
+                <div class="image-title">
+                    <img src="{{ asset('images/2.png') }}" alt="Image 1" class="img-fluid r">
+                </div>
+            </div>
+            <div class="col-12 text-center  col-md-1 d-flex align-items-center">
+            </div>
+        </div>
+    </div>
+</section>
+{{--  --}}
 <!--===================== Articles & Blogs sec  ===================== -->
 <section class="blog_sec section-py" id="blog">
     <div class="container">
