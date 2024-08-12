@@ -385,4 +385,7 @@
 	.join-btns li{
 		margin-bottom: 12px;
 	}
+	.pack_image {
+		height: auto;
+	}
 }
