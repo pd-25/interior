@@ -29,7 +29,7 @@
                         <i class="fa fa-map-marker ff20" aria-hidden="true"></i>
                     </div>
                     <div class="col-md-12 ps-0 fs-6 pt-1 mt-3 mb-4 fw-bolder">
-                        <h3 class="cad">1'st Floor, Vincent Plaza</h3>
+                        <h3 class="cad">UG 06,Mgf Metropolis Mall MG Road Gurgaon,Haryana,122002</h3>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <i class="fa fa-envelope ff20" aria-hidden="true"></i>
                     </div>
                     <div class="col-md-12 ps-0 fs-6 pt-1 mt-3 mb-4 fw-bolder">
-                        <h3 class="cad"> iinteriofy@gmail.com <br>
+                        <h3 class="cad">  connect@iinteriofy.com <br>
                             </h3>
 
                     </div>

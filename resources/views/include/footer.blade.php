@@ -84,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="footer_cont ml-5">
                         <div class="footer_links">
                             <div class="ftr_heading">
@@ -92,10 +92,10 @@
                             </div>
                             <ul class="links">
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com">Home</a>
+                                    <a href={{ url("/") }}>Home</a>
                                 </li>
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com/about-us">About Us</a>
+                                    <a href="{{ route("about-us") }}">About Us</a>
                                 </li>
 
                                 <li>
@@ -105,15 +105,19 @@
                                     <a href="/blogs">Blogs</a>
                                 </li>
                                 <li>
-                                    <a href="https://interiofy.udyogparibar.com/contact-us">Contact
+                                    <a href="{{ route('contact-us') }}">Contact
                                         Us</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('privacyPolicy') }}">Privacy Policy</a>
                                 </li>
 
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer_contact">
                         <ul>
                             <li>
@@ -122,7 +126,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Corporate Address :</h5>
-                                    <p>Gurgaon, Haryana, India</p>
+                                    <p class="">UG 06,Mgf Metropolis Mall MG Road Gurgaon,Haryana,122002</p>
                                 </div>
                             </li>
                             <li>
@@ -131,7 +135,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Write to us :</h5>
-                                    <p> iinteriofy@gmail.com</p>
+                                    <p> connect@iinteriofy.com</p>
                                 </div>
                             </li>
                             <li>
@@ -140,7 +144,7 @@
                                 </div>
                                 <div class="fc-text">
                                     <h5>Speak with us :</h5>
-                                    <p>+91 8130529961</p>
+                                    <p>+91 8826036989</p>
                                 </div>
                             </li>
                         </ul>
