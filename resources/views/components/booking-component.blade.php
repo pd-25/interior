@@ -422,7 +422,7 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <div class="">
+                                    <div class="budd">
                                         {{-- <form class="gaping" action="#" method="post"> --}}
                                         <div class="row mb-2">
                                             <div class="col-lg-6">

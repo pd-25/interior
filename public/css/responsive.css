@@ -170,19 +170,23 @@
 		display: block;
 		text-align: center;
 	} */
-	img.img-fluid.nr{
+	img.img-fluid.nr {
 		display: none;
 	}
-	.challenge-box{
+
+	.challenge-box {
 		margin-bottom: 30px;
 	}
+
 	.footer_cont {
 		margin-bottom: 30px;
 	}
-	.holiday_pack_area{
+
+	.holiday_pack_area {
 		padding: 0;
 	}
-	.miulti-step-pic{
+
+	.miulti-step-pic {
 		margin-bottom: 30px;
 	}
 }
@@ -303,7 +307,7 @@
 		font-size: 40px;
 		text-align: center;
 	}
-	
+
 }
 
 /* Media Query For different screens */
@@ -378,14 +382,33 @@
 		width: 49.99%;
 	} */
 }
-@media (max-width: 786px){
-	.join-btns{
+
+@media (max-width: 786px) {
+	.join-btns {
 		display: block;
 	}
-	.join-btns li{
+
+	.join-btns li {
 		margin-bottom: 12px;
 	}
+
 	.pack_image {
 		height: auto;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	ul.select_buttons {
+
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.budd {
+		margin: 20px;
+	}
+	.budd input {
+		margin-bottom: 10px;
+	}
+	#popularcity {
+		grid-template-columns: repeat(1, 1fr);
 	}
 }
