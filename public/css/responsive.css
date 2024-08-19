@@ -408,6 +408,9 @@
 	.budd input {
 		margin-bottom: 10px;
 	}
+	.sec-title {
+		text-align: left;
+	}
 	#popularcity {
 		grid-template-columns: repeat(1, 1fr);
 	}
