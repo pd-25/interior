@@ -414,4 +414,7 @@
 	#popularcity {
 		grid-template-columns: repeat(1, 1fr);
 	}
+	p.text-between-paragraph.text-size-all-page.sub-content {
+		text-align: left;
+	}
 }
