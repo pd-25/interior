@@ -22,7 +22,7 @@
      <!-- Main Stylesheet -->
      <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
      <!-- Responsive Css -->
-     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/responsive.css?v=1.0') }}">
      <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" rel="stylesheet">
      @stack('styles')
      <!-- jQuery v3.7.1 -->
