@@ -13,6 +13,7 @@ use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Enquries;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
 
 
@@ -219,73 +220,81 @@ class HomeController extends Controller
 
     public function booking(Request $request)
     {
-        $request->validate([
-            'services' => 'required',
-            'budget' => 'required',
-            'pincode' => 'required|numeric',
-            'date' => 'required',
-            'time' => 'required',
-            // 'expert_id' => 'required',
-        ]);
-        
-        $timestampPart = substr(time(), -4);
-        $randomPart = mt_rand(1000, 9999);
-
-        $userId = null;
-        if($request->mobile_no && $request->name && $request->email && $request->pin)
-        {
-            $userDetails = User::where('mobile_no', $request->mobile_no)->first();
-            if($userDetails){
-                return response()->json([
-                    'service_id' => " We have found that you are already registered. Please login for booking services"
-                ]);
-            }else{
-                $user = new User;
-                $user->name = $request->name;
-                $user->mobile_no = $request->mobile_no;
-                $user->email = $request->email;
-                $user->pin = $request->pin;
-                $user->save();
-                $userId = $user->id;
+        try {
+            $request->validate([
+                // 'services' => 'required',
+                'budget' => 'required',
+                'pincode' => 'required|numeric',
+                'date' => 'required',
+                'time' => 'required',
+                // 'expert_id' => 'required',
+            ]);
+            // dd($request->all());
+            
+            $timestampPart = substr(time(), -4);
+            $randomPart = mt_rand(1000, 9999);
+    
+            $userId = null;
+            if($request->mobile_no && $request->name && $request->email)
+            {
+                $userDetails = User::where('mobile_no', $request->mobile_no)->first();
+                if($userDetails){
+                    return response()->json([
+                        'service_id' => " We have found that you are already registered. Please login for booking services"
+                    ]);
+                }else{
+                    $user = new User;
+                    $user->name = $request->name;
+                    $user->mobile_no = $request->mobile_no;
+                    $user->email = $request->email;
+                    $user->pin = $request->pin;
+                    $user->save();
+                    $userId = $user->id;
+                }
             }
+            $booking = new Booking;
+            $booking->budget = $request->budget;
+            $booking->category = $request->category;
+            $booking->date = date('Y-m-d', strtotime($request->date));
+            $booking->time = $request->time;
+            if($request->home_requirements){
+                $booking->home_requirements = json_encode($request->home_requirements);
+            }
+            if($request->renovation){
+                $booking->renovation = json_encode($request->renovation);
+            }
+            // $booking->service = $request->services;
+            $booking->service = json_encode($request->services);
+            
+            $booking->pincode = $request->pincode;
+            
+            $booking->number_of_cabins = $request->number_of_cabins;
+            $booking->number_of_worksations = $request->number_of_worksations;
+            $booking->total_carpet_area = $request->total_carpet_area;
+    
+            $booking->number_of_cabins_renovation = $request->number_of_cabins_renovation;
+            $booking->number_of_worksations_renovation = $request->number_of_worksations_renovation;
+            $booking->total_carpet_area_renovation = $request->total_carpet_area_renovation;
+    
+            $booking->total_area = $request->total_area;
+            $booking->total_area_renovation = $request->total_area_renovation;
+    
+            // $booking->expert_id = $request->expert_id;
+            $booking->expert_id = 0;
+            $city = explode("-",$request->city);
+            $booking->district = $city[0];
+            $booking->city = $city[1];
+            $booking->block = $city[2];
+            $booking->service_id = $timestampPart . $randomPart;
+            $booking->user_id = $userId == null ? auth()->user()->id : $userId;
+            $booking->save();
+            return response()->json([
+                'service_id' => $booking->service_id
+            ]);
+        } catch (\Throwable $th) {
+            Log::debug("Error", [$th->getLine()]);
+            Log::debug("Error2", [$th->getMessage()]);
         }
-        $booking = new Booking;
-        $booking->budget = $request->budget;
-        $booking->category = $request->category;
-        $booking->date = date('Y-m-d', strtotime($request->date));
-        $booking->time = $request->time;
-        if($request->home_requirements){
-            $booking->home_requirements = json_encode($request->home_requirements);
-        }
-        if($request->renovation){
-            $booking->renovation = json_encode($request->renovation);
-        }
-        $booking->service = $request->services;
-        $booking->pincode = $request->pincode;
-        
-        $booking->number_of_cabins = $request->number_of_cabins;
-        $booking->number_of_worksations = $request->number_of_worksations;
-        $booking->total_carpet_area = $request->total_carpet_area;
-
-        $booking->number_of_cabins_renovation = $request->number_of_cabins_renovation;
-        $booking->number_of_worksations_renovation = $request->number_of_worksations_renovation;
-        $booking->total_carpet_area_renovation = $request->total_carpet_area_renovation;
-
-        $booking->total_area = $request->total_area;
-        $booking->total_area_renovation = $request->total_area_renovation;
-
-        // $booking->expert_id = $request->expert_id;
-        $booking->expert_id = 0;
-        $city = explode("-",$request->city);
-        $booking->district = $city[0];
-        $booking->city = $city[1];
-        $booking->block = $city[2];
-        $booking->service_id = $timestampPart . $randomPart;
-        $booking->user_id = $userId == null ? auth()->user()->id : $userId;
-        $booking->save();
-        return response()->json([
-            'service_id' => $booking->service_id
-        ]);
     }
 
 

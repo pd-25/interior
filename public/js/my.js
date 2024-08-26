@@ -600,19 +600,36 @@ function validatePartnerFormII(currentStep) {
           return true;
      }
 
-     if(currentStep == 3){
-          var services = $('input[name="services"]:checked').val();
-          if(services == undefined){
-               Swal.fire({
-                   icon: "error",
-                   title: "Oops...",
-                   text: "Please choose your services!",
-                   footer: ''
-               });
-               return false;
+     // if(currentStep == 3){
+     //      var services = $('input[name="services"]:checked').val();
+     //      if(services == undefined){
+     //           Swal.fire({
+     //               icon: "error",
+     //               title: "Oops...",
+     //               text: "Please choose your services!",
+     //               footer: ''
+     //           });
+     //           return false;
+     //      }
+     //      return true;
+     // }
+     if (currentStep == 3) {
+          // Get all checked checkboxes
+          var services = $('input[name="services[]"]:checked');
+      
+          // Check if at least one checkbox is selected
+          if (services.length === 0) {
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Please choose at least one service!",
+                  footer: ''
+              });
+              return false;
           }
           return true;
-     }
+      }
+      
 
      if(currentStep == 4){
           var budget = $("#budget").val();
