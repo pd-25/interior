@@ -79,7 +79,7 @@
                                                 </i>
                                             </button>
                                             <div class="dropdown-menu" style="">
-                                                <a class="dropdown-item" href="{{ route('bookingsUpdate', encrypt($item->id)) }}"><i class="uil uil-edit me-1"></i>Update</a>
+                                                <a class="dropdown-item" href="{{ route('bookingsUpdate', encrypt($item->id)) }}"><i class="uil uil-edit me-1"></i>View</a>
                                                 <a class="dropdown-item" href="{{ route('bookingsDelete',$item->id) }}" onclick="return confirm('Are you sure want to delete this record?')"><i class="uil uil-trash-alt me-1"></i>Delete</a>
                                             </div>
                                         </div>

@@ -368,105 +368,106 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-12  mb-2">
-                            <h4 style="text-transform: uppercase">Services Required {{@$bookings->service}}</h4>
+                        <div class="col-lg-12 mb-2">
+                            <h4 style="text-transform: uppercase">Services Required</h4>
                         </div>
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_14" name="services"
-                                    value="architecture" {{@$bookings->service =='architecture' ? 'checked':''}}>
-                                <label class="" for="item_14">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/plan.png" alt=""> --}}
-                                    </div>
-                                    <small>Architecture</small>
-                                </label>
-                            </div>
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_15" name="services"
-                                    value="hvac_consultation" {{@$bookings->service=='hvac_consultation' ? 'checked':''}}>
-                                <label class="" for="item_15">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/workspace.png" 
-                                            alt="">--}}
-                                    </div>
-                                    <small>HVAC</small>
-                                </label>
-                            </div>
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_16" name="services"
-                                    value="design_consultation" {{@$bookings->service=='design_consultation' ? 'checked':''}}>
-                                <label class="" for="item_16" >
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/lighting.png"
-                                            alt=""> --}}
-                                    </div>
-                                    <small>Design</small>
-                                </label>
-                            </div>
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_17" name="services"
-                                    value="electrical_consultation" {{@$bookings->service=='electrical_consultation' ? 'checked':''}}>
-                                <label class="" for="item_17" >
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/plumbing.png" 
-                                            alt="">--}}
-                                    </div>
-                                    <small>Electrical</small>
-                                </label>
-                            </div>
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_18" name="services"
-                                    value="contractor" {{@$bookings->service=='contractor' ? 'checked':''}}>
-                                <label class="" for="item_18">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/sketch.png" 
-                                            alt="">--}}
-                                    </div>
-                                    <small>Contractor</small>
-                                </label>
-                            </div>
-
-                            <div class="col-6  mb-2">
-                                <input type="radio" id="item_19" name="services"
-                                    value="structural_consultation" {{@$bookings->service=='structural_consultation' ? 'checked':''}}>
-                                <label class="" for="item_19">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="{{asset('')}} " alt=""> --}}
-                                    </div>
-                                    <small>Civil & Structural</small>
-                                </label>
-                            </div>
-
-                            <div class="col-6  mb-2">
-                                <input type="radio" {{@$bookings->service=='painting' ? 'checked':''}} id="item_20" name="services" value="painting">
-                                <label class="" for="item_20">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/painting33.png" alt=""> --}}
-                                    </div>
-                                    <small>Painting</small>
-                                </label>
-                            </div>
-
-                            <div class="col-6  mb-2">
-                                <input type="radio" {{@$bookings->service=='plumbing' ? 'checked':''}} id="item_21" name="services" value="plumbing">
-                                <label class="" for="item_21">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/plumbing.png" alt=""> --}}
-                                    </div>
-                                    <small>Plumbing</small>
-                                </label>
-                            </div>
-
-                            <div class="col-6  mb-2">
-                                <input type="radio" {{@$bookings->service=='furniture_pictures' ? 'checked':''}} id="item_22" name="services" value="furniture_pictures">
-                                <label class="" for="item_22">
-                                    <div class="icon">
-                                        {{-- <img class="img-fluid" src="images/furniture.png" alt=""> --}}
-                                    </div>
-                                    <small>Furniture & Pictures</small>
-                                </label>
-                            </div>
+                    
+                        @php
+                            // Assuming $bookings->services is a JSON-encoded array of selected services
+                            $selectedServices = json_decode(@$bookings->service, true);
+                        @endphp
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_14" name="services[]" value="architecture" {{ in_array('architecture', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_14">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/plan.png" alt=""> --}}
+                                </div>
+                                <small>Architecture</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_15" name="services[]" value="hvac_consultation" {{ in_array('hvac_consultation', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_15">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/workspace.png" alt=""> --}}
+                                </div>
+                                <small>HVAC</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_16" name="services[]" value="design_consultation" {{ in_array('design_consultation', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_16">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/lighting.png" alt=""> --}}
+                                </div>
+                                <small>Design</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_17" name="services[]" value="electrical_consultation" {{ in_array('electrical_consultation', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_17">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/plumbing.png" alt=""> --}}
+                                </div>
+                                <small>Electrical</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_18" name="services[]" value="contractor" {{ in_array('contractor', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_18">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/sketch.png" alt=""> --}}
+                                </div>
+                                <small>Contractor</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_19" name="services[]" value="structural_consultation" {{ in_array('structural_consultation', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_19">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="{{asset('')}}" alt=""> --}}
+                                </div>
+                                <small>Civil & Structural</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_20" name="services[]" value="painting" {{ in_array('painting', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_20">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/painting33.png" alt=""> --}}
+                                </div>
+                                <small>Painting</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_21" name="services[]" value="plumbing" {{ in_array('plumbing', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_21">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/plumbing.png" alt=""> --}}
+                                </div>
+                                <small>Plumbing</small>
+                            </label>
+                        </div>
+                    
+                        <div class="col-6 mb-2">
+                            <input type="checkbox" id="item_22" name="services[]" value="furniture_pictures" {{ in_array('furniture_pictures', $selectedServices) ? 'checked' : '' }}>
+                            <label for="item_22">
+                                <div class="icon">
+                                    {{-- <img class="img-fluid" src="images/furniture.png" alt=""> --}}
+                                </div>
+                                <small>Furniture & Pictures</small>
+                            </label>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -541,10 +542,10 @@
             </div>
         </div>
        
-        <div class="col-12">
+        {{-- <div class="col-12">
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{{route('bookingsUpdate', encrypt(@$bookings->id))}}" class="btn btn-danger" >Cancel</a>
-        </div>
+        </div> --}}
     </div>
 </form>
 
