@@ -6,11 +6,9 @@
                             <!-- <li class="menu-title">Navigation</li> -->
 
                             <li>
-                                <a href="#sidebarDashboard" data-bs-toggle="collapse">
-                                    {{-- <span class="badge bg-success float-end">02</span> --}}
+                                <a href="{{ route('adminDashboard') }}">
                                     <i data-feather="home"></i>
-                                    <span> Dashboards </span>
-                                    <!-- <span class="menu-arrow"></span> -->
+                                    <span>Dashboards</span>
                                 </a>
                             </li>
                             <li class="menu-title mt-2"></li>

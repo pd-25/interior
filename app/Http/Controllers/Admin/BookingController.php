@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -58,13 +62,13 @@ class BookingController extends Controller
     public function officebookings()
     {
         $data['bookings'] = Booking::with('user_details')->where('category', 'office')->orderBy('id','desc')->paginate(20);
-        return view('admin.booking.home',$data);
+        return view('admin.booking.office',$data);
     }
     
     public function retailbookings()
     {
         $data['bookings'] = Booking::with('user_details')->where('category', 'retail')->orderBy('id','desc')->paginate(20);
-        return view('admin.booking.home',$data);
+        return view('admin.booking.retail',$data);
     }
 
     public function bookingsDelete($id)
@@ -74,4 +78,13 @@ class BookingController extends Controller
         return back()->with('success', 'Deleted successfully');
     }
     
+    public function export(Request $request) 
+    {
+        $from_date = request()->fromDate;
+        $to_date = request()->toDate; 
+        $excelDownloadType = request()->excelDownloadType; 
+        $category = request()->category;
+        
+        return Excel::download(new UsersExport($from_date, $to_date, $excelDownloadType, $category), 'Booking_list.xlsx');
+    }
 }
