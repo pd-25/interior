@@ -29,7 +29,7 @@
 		<link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         @stack('styles')
 

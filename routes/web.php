@@ -206,6 +206,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('/booking-update', [BookingController::class, 'updatebookingdetails'])->name('updatebookingdetails');
         Route::get('/bookings-delete/{id}',[BookingController::class,'bookingsDelete'])->name('bookingsDelete');
 
+        Route::post('/export-data', [BookingController::class, 'export'])->name('export_data');
+
         Route::get('/home-banner',[HomeBannerController::class,'index'])->name('homebanner.index');
         Route::get('/home-banner-create',[HomeBannerController::class,'create'])->name('homebanner.create');
         Route::post('/home-banner-store',[HomeBannerController::class,'store'])->name('homebanner.store');
@@ -231,12 +233,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
-
-
-
-
-
