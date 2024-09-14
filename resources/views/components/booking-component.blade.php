@@ -39,7 +39,7 @@
                                             <div class="form-group">
                                                 <input type="number" id="mobile_code" class="mobile_no form-control"
                                                     placeholder="Phone Number" name="mobile_no"
-                                                    onkeypress="New_user_registration_otp_generate()">
+                                                    onkeypress="validate_mobile_number()">
                                             </div>
                                             <div class="form-group tuggle toggle-switch">
                                                 <div class="tuggle_text">
@@ -599,6 +599,72 @@
 
 @push('scripts')
     <script>
+
+function validate_mobile_number(){
+    if($(".mobile_no").val().length==10){
+        var mobile = $(".mobile_no").val();
+        $.ajax({
+            url: "{{route('validatemobilenumber')}}",
+            method: 'POST',
+            data: {
+                    "_token": "{{ csrf_token() }}",
+                    "mobile_no": mobile
+                },
+                dataType: 'JSON',
+            beforeSend: function () {
+                let timerInterval;
+                Swal.fire({
+                //title: "Auto close alert!",
+                html: `Checking your mobile number`,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+                });
+            },
+            success: (response) => {
+                if(response.success)
+                console.log(response.success);
+                setTimeout(function(){
+                    if(response.success == 'Mobile number is available'){
+                        Swal.fire({
+                            title: "Success!",
+                            html: `<b>Your ${response.success}</b>`,
+                            icon: "success"
+                        }).then((result) => {
+                            $("#sendOtp").removeClass("d-none");
+                        });    
+                    }else{
+                        Swal.fire({
+                            title: "Failed!",
+                            html: `<b>Your ${response.error}</b>`,
+                            icon: "error"
+                        }).then((result) => {
+                            $("#sendOtp").removeClass("d-none");
+                        }); 
+                    }
+                },2000);    
+            },
+            error: (response) => {
+                console.log(response);
+            }
+        });
+    }
+}
+
         $(document).ready(function() {
             $('.showhide').hide();
             $('.pincode').attr('autocomplete', 'off');
