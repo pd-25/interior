@@ -179,4 +179,15 @@ class AuthOtpController extends Controller
 
         return redirect()->route('otp.login')->with('error', 'Your Otp is not correct');
     }
+
+    public function validate_mobile_number(Request $request)
+    {
+        $user = User::where('mobile_no', $request->mobile_no)->first();
+        if ($user !== null) {
+            return ["error"=>"Mobile number already exists"];
+        } else {
+            return ["success"=>"Mobile number is available"];
+        }
+    }
+
 }

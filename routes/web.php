@@ -99,6 +99,8 @@ Route::controller(AuthOtpController::class)->group(function(){
     Route::post('/otp/generate', 'generate')->name('otp.generate');
     Route::post('/otp/verification', 'verification')->name('otp.verification');
     Route::post('/otp/login', 'loginWithOtp')->name('otp.getlogin');
+
+    Route::post('/validate-mobile-number', 'validate_mobile_number')->name('validatemobilenumber');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
