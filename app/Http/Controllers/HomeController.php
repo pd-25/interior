@@ -239,9 +239,10 @@ class HomeController extends Controller
             {
                 $userDetails = User::where('mobile_no', $request->mobile_no)->first();
                 if($userDetails){
-                    return response()->json([
-                        'service_id' => " We have found that you are already registered. Please login for booking services"
-                    ]);
+                    $userId = $userDetails->id;
+                    // return response()->json([
+                    //     'service_id' => " We have found that you are already registered. Please login for booking services"
+                    // ]);
                 }else{
                     $user = new User;
                     $user->name = $request->name;

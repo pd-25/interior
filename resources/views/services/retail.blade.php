@@ -417,7 +417,7 @@
                 success: function(response) {
                     console.log("Success:", response);
 
-                    var bookingID = "ServiceID" + response.service_id;
+                    var bookingID = "#" + response.service_id;
 
                     setTimeout(function() {
                         Swal.fire({

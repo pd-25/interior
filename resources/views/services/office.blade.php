@@ -422,7 +422,7 @@
                     const startsWithNumber = /^\d/.test(serviceId);
                     let htmL_l = ''; // Changed from const to let
                     if (startsWithNumber) {
-                        var bookingID = "ServiceID" + serviceId;
+                        var bookingID = "#" + serviceId;
                         htmL_l =
                             `Thank you for submitting your query. Someone from our team will get in touch with you shortly<br><b>Your Booking ID is: ${bookingID}</b>.`;
                     } else {
