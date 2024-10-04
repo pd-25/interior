@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W852L158ZN"></script>
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-W852L158ZN"></script>
     <script>
         window.dataLayer = window.datalayer ||
             function gtag() {
@@ -20,7 +20,7 @@
             }
         gtag('js', new Date());
         gtag('config', 'G-W852L158ZN');
-    </script>
+    </script> --}}
 </head>
 
 <body>
