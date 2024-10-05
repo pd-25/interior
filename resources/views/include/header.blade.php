@@ -31,15 +31,15 @@
      <!-- Icon Font Stylesheet -->
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W852L158ZN"></script>
-    <script>
-        window.dataLayer = window.datalayer ||
-            function gtag() {
-                datalayer.push(arguments);
-            }
-        gtag('js', new Date());
-        gtag('config', 'G-W852L158ZN');
-    </script>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W8S2L1S8ZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W8S2L1S8ZN');
+</script>
 </head>
 
 <body>
