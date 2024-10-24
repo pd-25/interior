@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AdmindashboardController extends Controller
 {
@@ -58,7 +60,25 @@ class AdmindashboardController extends Controller
         }
         $data['finalCitys'] = $finalCitys ;
         $data['TotalCounts'] =$TotalCounts;
+        //Patner list
+        $userscount = User::select(
+            DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'),
+            DB::raw('count(*) as total')
+        )
+        ->where('type', 'partner')
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get(12);
 
+        $finalTotalMonth = array();
+        $TotaluserCounts = array();
+        foreach ($userscount  as $key => $value) {
+            array_push($finalTotalMonth, $value->month);
+            array_push($TotaluserCounts, $value->total);
+        }
+        
+        $data['finalTotalMonth'] = $finalTotalMonth ;
+        $data['TotaluserCounts'] =$TotaluserCounts;
         return view('admin.dashboard.dashboard', compact('data'));
     }
 }

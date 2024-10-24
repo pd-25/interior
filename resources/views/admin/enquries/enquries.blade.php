@@ -35,6 +35,7 @@
                                     <th scope="col">Contact Details</th>
                                     <th scope="col">Message/Address</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Created at</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -42,28 +43,29 @@
                                 @if (!empty($enquiry))
                                 @foreach ($enquiry as $index=>$item)
                                 <tr>
-                                    <td scope="row">{{$index+1}}</td>
-                                    <td scope="row">{{$item->fullName}}</td>
+                                    <td scope="row">{{@$index+1}}</td>
+                                    <td scope="row">{{@$item->fullName}}</td>
                                     <td scope="row">
-                                        <div>{{$item->email}}</div>
-                                        <div>{{$item->phoneNo}}</div>
+                                        <div>{{@$item->email}}</div>
+                                        <div>{{@$item->phoneNo}}</div>
                                     </td>
-                                    <td scope="row">{{$item->address}}</td>
+                                    <td scope="row">{{@$item->address}}</td>
                                     <td scope="row">
-                                        @if ($item->status == 0)
+                                        @if (@$item->status == 0)
                                             <span class="text-info">Panding</span>
-                                        @elseif($item->status == 1)
+                                        @elseif(@$item->status == 1)
                                             <span class="text-success">Done</span>
-                                        @elseif($item->status == 2)
+                                        @elseif(@$item->status == 2)
                                             <span class="text-danger">Rejected</span>
                                         @endif
                                     </td>
+                                    <td> {{ date('d-m-Y', strtotime(@$item->created_at)) }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <div>
-                                                <a href="{{route('enquries.edit', $item->id)}}" class="btn btn-outline-primary btn-sm mx-2">Edit</a>
+                                                <a href="{{route('enquries.edit', @$item->id)}}" class="btn btn-outline-primary btn-sm mx-2">Edit</a>
                                             </div>
-                                            <form action="{{route('enquriesdelete', $item->id)}}" method="post">
+                                            <form action="{{route('enquriesdelete', @$item->id)}}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-outline-danger DeleteEnquiry btn-sm" type="submit">Delete</button>
@@ -76,7 +78,7 @@
                             </tbody>
                         </table>
                         <div>
-                            {{$enquiry->links() }}
+                            {{@$enquiry->links() }}
                         </div>
                     </div>
                 </div>

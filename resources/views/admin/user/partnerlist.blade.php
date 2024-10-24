@@ -38,6 +38,7 @@
                             <th>Patner Details</th>
                             <th>Firm Name</th>
                             <th>Firm GST</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -57,6 +58,7 @@
                                         </td>
                                         <td><?php echo $row->firm_name; ?></td>
                                         <td><?php echo $row->firm_gst; ?></td>
+                                        <td> {{ date('d-m-Y', strtotime($row->created_at)) }}</td>
                                         {{-- <td>
                                             <div class="btn-group mt-2 me-1">
                                                 <button type="button" class="btn btn-secondary">Action</button>

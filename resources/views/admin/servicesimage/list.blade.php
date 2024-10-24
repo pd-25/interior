@@ -68,6 +68,7 @@
                             <th>Image</th>
                             <th>Service</th>
                             <th>Services Image Name</th>
+                            <th>Created at</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -83,6 +84,7 @@
                                         <td><img src="{{ asset('storage/'.$row->image_path) }}" width="50" height="50"></td>
                                         <td>{{ $row->serviceTeel->name }}</td>
                                         <td>{{ $row->services_name }}</td>
+                                        <td> {{ date('d-m-Y', strtotime(@$row->created_at)) }}</td>
                                         <td>
                                             <div class="btn-group mt-2 me-1">
                                                 <button type="button" class="btn btn-secondary">Action</button>
