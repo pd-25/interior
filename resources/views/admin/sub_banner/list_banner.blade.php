@@ -36,6 +36,7 @@
                             <th>Media</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -58,6 +59,7 @@
                                             <span class="text-danger"> <i data-feather="x"></i> </span>
                                         @endif
                                     </td>
+                                    <td> {{ date('d-m-Y', strtotime(@$item->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group mt-2 me-1">
                                             <button type="button" class="btn btn-secondary">Action</button>

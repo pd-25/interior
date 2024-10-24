@@ -69,6 +69,7 @@
                             <th>Service</th>
                             <th>Services Banner Name</th>
                             <th>Status</th>
+                            <th>Created at</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -85,6 +86,7 @@
                                         <td>{{ $row->serviceBanr->name }}</td>
                                         <td>{{ $row->heading }}</td>
                                         <td><?php echo ($row->status == "1" ? "Active": "Inactive"); ?></td>
+                                        <td> {{ date('d-m-Y', strtotime(@$row->created_at)) }}</td>
                                         <td>
                                             <div class="btn-group mt-2 me-1">
                                                 <button type="button" class="btn btn-secondary">Action</button>

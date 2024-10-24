@@ -57,7 +57,7 @@
                             <th>Occupation</th>
                             <th>City/Pin</th>
                             <th>Country</th>
-                            {{-- <th>DOJ</th> --}}
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -66,15 +66,14 @@
                         @if ($user->count())
                             @foreach ($user as $users)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $users->name }}</td>
-                                    <td>{{ $users->email }}</td>
-                                    <td>{{ $users->mobile_no }} </td>
-                                    <td>{{ $users->occupation }}</td>
-                                    <td>{{ $users->city }}</td>
-                                    <td>{{ $users->country }}</td>
-
-                                    {{-- <td>{{ $users->created_at->format('d-m-Y') }}</td> --}}
+                                    <td>{{ @$loop->iteration }}</td>
+                                    <td>{{ @$users->name }}</td>
+                                    <td>{{ @$users->email }}</td>
+                                    <td>{{ @$users->mobile_no }} </td>
+                                    <td>{{ @$users->occupation }}</td>
+                                    <td>{{ @$users->city }}</td>
+                                    <td>{{ @$users->country }}</td>
+                                    <td> {{ date('d-m-Y', strtotime(@$users->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group mt-2 me-1">
                                             <button type="button" class="btn btn-secondary">Action</button>
