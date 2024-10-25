@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,5 +35,11 @@ class Booking extends Model
     public function partner_details()
     {
         return $this->belongsTo('App\Models\User','expert_id','id');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        // return Carbon::parse($value)->setTimezone(config('app.timezone'))->toDateTimeString();
+        return Carbon::parse($value)->timezone('Asia/Kolkata')->toDateTimeString();
     }
 }

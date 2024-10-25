@@ -100,7 +100,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{ date('d M Y H:m', strtotime(@$item->created_at))}}
+                                            {{ date('d M Y H:m A', strtotime(@$item->created_at))}}
                                         </td>
                                         <td>
                                             <div class="btn-group mt-2 me-1">
