@@ -103,7 +103,7 @@
         // ['Architecture', 'HVAC', 'Design', 'Electrical', 'Contractor', 'Civil & Structural', 'Painting','Plumbing', 'Furniture & Pictures']
         labels: {!! json_encode($data['finalTotalMonth']) !!},
         datasets: [{
-          label: 'Service wise leads',
+          label: 'Month wise Partners Onborded',
           data: {!! json_encode($data['TotaluserCounts']) !!},
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
