@@ -26,6 +26,24 @@
                     <h5 class="m-0">Enquries List</h5>
                 </div>
                 <div class="card-body">
+                    <form action="{{route("enquriesexport_data")}}" method="post">
+                        @csrf
+                        @method('POST')
+                        <div class="row mb-3 justify-content-end">
+                            <div class="col-3" id="FromDateShowHide">
+                                <label for="" class="form-label" >From Date</label>
+                                <input type="date" class="form-control" id="FromDate" name="fromDate">
+                            </div>
+                            <div class="col-3" id="ToDateShowHide">
+                                <label for="" class="form-label" >To Date</label>
+                                <input type="date" class="form-control" id="ToDate" name="toDate">
+                            </div>
+                            <div class="col-2"  id="DownloadBtnShowHide">
+                                <label for="" class="form-label" style="display: list-item;"> </label>
+                                <button type="submit" class="btn btn-success btn-success" href="javascript:void(0)">Download Excel</button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm">
                             <thead>

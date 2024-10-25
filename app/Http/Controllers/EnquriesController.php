@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Enquries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Exports\EnquiryExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
 class EnquriesController extends Controller
 {
     /**
@@ -82,5 +86,12 @@ class EnquriesController extends Controller
         }else{
             return response()->json('error');
         }
+    }
+
+    public function enquriesexport(Request $request) 
+    {
+        $from_date = request()->fromDate;
+        $to_date = request()->toDate; 
+        return Excel::download(new EnquiryExport($from_date, $to_date), 'Enquiry_list.xlsx');
     }
 }

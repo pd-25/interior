@@ -60,9 +60,9 @@ class UsersExport implements FromCollection, WithHeadings
             'total_area'=>$value->total_area,
             'total_area_renovation'=>$value->total_area_renovation,
             
-            'date' => date('d m Y', strtotime($value->date)),
+            'date' => date('d-m-Y h:i A', strtotime($value->date)),
             'status' => $value->status,
-            'created_at' => date('d m Y', strtotime($value->created_at)),
+            'created_at' =>  date('d-m-Y h:i A', strtotime($value->created_at)),
           );
           array_push($finalArray, $tempArray);
         }
