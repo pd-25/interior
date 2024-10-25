@@ -48,6 +48,18 @@ class UsersExport implements FromCollection, WithHeadings
             'category' => $value->category,
             'budget' => $value->budget,
             'location' => $value->block . ', '.  $value->city . ', '. $value->district . ', '. $value->pincode,
+            'home_requirements'=> $value->home_requirements,
+            'renovation'=> $value->renovation,
+            'service'=> $value->service,
+            'number_of_cabins'=>$value->number_of_cabins,
+            'number_of_worksations'=>$value->number_of_worksations,
+            'total_carpet_area'=>$value->total_carpet_area,
+            'number_of_cabins_renovation'=>$value->number_of_cabins_renovation,
+            'number_of_worksations_renovation'=>$value->number_of_worksations_renovation,
+            'total_carpet_area_renovation'=>$value->total_carpet_area_renovation,
+            'total_area'=>$value->total_area,
+            'total_area_renovation'=>$value->total_area_renovation,
+            
             'date' => date('d m Y', strtotime($value->date)),
             'status' => $value->status,
             'created_at' => date('d m Y', strtotime($value->created_at)),
@@ -61,6 +73,6 @@ class UsersExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ["SL No", "user Details", "Category", "Budget", "Location", "Booking Date","Status", "Created Date"];
+        return ["SL No", "user Details", "Category", "Budget", "Location", "Home Requirements","Renovation", "Service", "Number of Cabins", "Number of Worksations", "Total Carpet Area","Number of Cabins Renovation", "Number of Worksations Renovation", "Total Carpet Area Renovation", "Total Area", "Total Area Renovation", "Booking Date","Status", "Created Date"];
     }
 }

@@ -34,6 +34,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Contact Details</th>
                                     <th scope="col">Message/Address</th>
+                                    <th scope="col">Page Reference</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Created at</th>
                                     <th scope="col">Action</th>
@@ -50,6 +51,7 @@
                                         <div>{{@$item->phoneNo}}</div>
                                     </td>
                                     <td scope="row">{{@$item->address}}</td>
+                                    <td scope="row">{{@$item->page_ref}}</td>
                                     <td scope="row">
                                         @if (@$item->status == 0)
                                             <span class="text-info">Panding</span>

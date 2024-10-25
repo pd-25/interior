@@ -120,8 +120,8 @@
                                                 </span>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" id="mobile_code" class="form-control"
-                                                    placeholder="Phone Number" name="phoneNo">
+                                                <input type="tel" id="mobile_code" class="form-control"
+                                                    placeholder="Phone Number" name="phoneNo" maxlength="10">
                                                 <span class="text-danger">
                                                     @error('phoneNo')
                                                         <strong>{{ $message }}</strong>
@@ -138,6 +138,11 @@
                                                     @enderror
                                                 </span>
                                             </div>
+                                            @php
+                                                $pageUrl = url()->current();
+                                                $pageUrlsplite = explode("services",$pageUrl);
+                                            @endphp
+                                            <input type="hidden" name="page_ref" value="{{@$pageUrlsplite[1]}}">
                                             <button id="bfc" class="btn my_newBtn" type="submit">
                                                 Submit
                                             </button>
