@@ -27,44 +27,48 @@
                 </div>
                 <div class="col-md-4">
                     <span class="form-label fw-bold">Name</span>
-                    <p>{{$enquiry->fullName}}</p>
+                    <p>{{@$enquiry->fullName}}</p>
                 </div>
                 <div class="col-md-4">
                     <span class="form-label fw-bold">Email</span>
-                    <p >{{$enquiry->email}}</p>
+                    <p >{{@$enquiry->email}}</p>
                 </div>
                 <div class="col-md-4">
                     <span class="form-label fw-bold">Phone</span>
-                    <p >{{$enquiry->phoneNo}}</p>
+                    <p >{{@$enquiry->phoneNo}}</p>
                 </div>
                 @if ($enquiry->type_query)
                     <div class="col-md-4">
                         <span class="form-label fw-bold">Type of query</span>
-                        <p >{{$enquiry->type_query}}</p>
+                        <p >{{@$enquiry->type_query}}</p>
                     </div>
                 @endif
                 <div class="col-md-4">
                     <span class="form-label fw-bold">status (
-                            @if ($enquiry->status == 0)
+                            @if (@$enquiry->status == 0)
                                 <span class="text-info">Panding...</span>
-                            @elseif($enquiry->status == 1)
+                            @elseif(@$enquiry->status == 1)
                                 <span class="text-success">Done</span>
-                            @elseif($enquiry->status == 2)
+                            @elseif(@$enquiry->status == 2)
                                 <span class="text-danger">Rejected</span>
                             @endif
                     )
                     </span>
                     <select name="status" class="form-select form-select-sm" style="width:150px" onchange="ChangeEStatus({{$enquiry->id}}, value)">
-                        <option value="0" {{$enquiry->status == 0 ? 'selected':''}}>Panding...</option>
-                        <option value="1" {{$enquiry->status == 1 ? 'selected':''}}>Done</option>
-                        <option value="2" {{$enquiry->status == 2 ? 'selected':''}}>Rejected</option>
+                        <option value="0" {{@$enquiry->status == 0 ? 'selected':''}}>Panding...</option>
+                        <option value="1" {{@$enquiry->status == 1 ? 'selected':''}}>Done</option>
+                        <option value="2" {{@$enquiry->status == 2 ? 'selected':''}}>Rejected</option>
                     </select>
                     <div id="bindstatus">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <span class="form-label fw-bold">Ip</span>
-                    <p >{{$enquiry->ip}}</p>
+                    <p >{{@$enquiry->ip}}</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="form-label fw-bold">Page Reference</span>
+                    <p >{{@$enquiry->page_ref}}</p>
                 </div>
                 {{-- <div class="col-md-4">
                     <span class="form-label fw-bold">State</span>
@@ -83,12 +87,12 @@
                     <p >{{$enquiry->longitude}}</p>
                 </div> --}}
                 <div class="col-md-12">
-                    @if ($enquiry->type_query)
+                    @if (@$enquiry->type_query)
                     <span class="form-label fw-bold">Message</span>
                     @else
                     <span class="form-label fw-bold">Address</span>
                     @endif
-                    <p >{{$enquiry->address}}</p>
+                    <p >{{@$enquiry->address}}</p>
                 </div>
             </div>
         </div>

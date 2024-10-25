@@ -15,7 +15,7 @@ use App\Models\Enquries;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
-
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -167,6 +167,8 @@ class HomeController extends Controller
         $enquiry->type_query = $request->type_query;
         $enquiry->status = 0;
         $enquiry->address = $request->address;
+        $page_ref = preg_replace('/\//', '', $request->page_ref);
+        $enquiry->page_ref = str::upper($page_ref);
         if($enquiry->save())
         {
             return redirect()->back()->with('success', 'Thank you. We have received your enquiry. Someone from our team will contact you shortly.');
