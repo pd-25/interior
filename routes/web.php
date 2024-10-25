@@ -225,6 +225,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/enquries-edit/{id}',[EnquriesController::class,'edit'])->name('enquries.edit');
         Route::delete('/enquries-delete/{id}', [EnquriesController::class, 'delete'])->name('enquriesdelete');
         Route::get('/enquries-status/{id}', [EnquriesController::class, 'statuschnage'])->name('enquriesstatus');
+
+        Route::post('/enquries-export-data', [EnquriesController::class, 'enquriesexport'])->name('enquriesexport_data');
+
     });
 });
 
