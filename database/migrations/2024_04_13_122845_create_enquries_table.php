@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('phoneNo');
             $table->text('address')->nullable();
             $table->string('city')->nullable();
-            $table->string('state')->nullable()
-            $table->string('page_ref')->nullable();
+            $table->string('state')->nullable();
+            // $table->string('page_ref')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
         });
