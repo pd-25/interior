@@ -59,7 +59,7 @@
                                             <span class="text-danger">Rejected</span>
                                         @endif
                                     </td>
-                                    <td> {{ date('d-m-Y h:i', strtotime(@$item->created_at)) }}</td>
+                                    <td> {{ date('d-m-Y h:i A', strtotime(@$item->created_at)) }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <div>
