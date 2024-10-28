@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Partner;
+use App\Exports\PartnerExport;
+use App\Exports\CustomerExport;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -91,4 +96,19 @@ class UserController extends Controller
         $user->delete();
         return back()->with('success', 'Deleted successfully');
     }
+
+    public function partnerexport(Request $request) 
+    {
+        $from_date = request()->fromDate;
+        $to_date = request()->toDate; 
+        return Excel::download(new PartnerExport($from_date, $to_date), 'Partner_list.xlsx');
+    }
+
+    public function customerexport(Request $request) 
+    {
+        $from_date = request()->fromDate;
+        $to_date = request()->toDate; 
+        return Excel::download(new CustomerExport($from_date, $to_date), 'Customer_list.xlsx');
+    }
+    
 }

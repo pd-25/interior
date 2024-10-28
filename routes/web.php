@@ -169,6 +169,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::get('/customer-list', [UserController::class, 'customerlist'])->name('customerlist');
         Route::get('/partner-list', [UserController::class, 'partnerlist'])->name('partnerlist');
+        Route::post('/partner-list-export', [UserController::class, 'partnerexport'])->name('partnerlistexport');
+        Route::post('/customer-list-export', [UserController::class, 'customerexport'])->name('customerlistexport');
         Route::get('/view-user',[UserController::class,'viewCustomer'])->name('viewcustomer');
 
         Route::get('/view-user-update/{id}',[UserController::class,'partnerupdate'])->name('partnerupdate');
@@ -222,6 +224,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/sub-banner-destroy/{id}',[HomeBannerController::class,'subdestroy'])->name('subbanner.destroy');
 
         Route::get('/enquries-list',[EnquriesController::class,'index'])->name('enquries.index');
+        Route::get('/contact-enquries-list',[EnquriesController::class,'create'])->name('contactenquries.create');
+
         Route::get('/enquries-edit/{id}',[EnquriesController::class,'edit'])->name('enquries.edit');
         Route::delete('/enquries-delete/{id}', [EnquriesController::class, 'delete'])->name('enquriesdelete');
         Route::get('/enquries-status/{id}', [EnquriesController::class, 'statuschnage'])->name('enquriesstatus');

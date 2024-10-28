@@ -106,6 +106,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="{{ route('contactenquries.create') }}">
+                                    <i data-feather="message-square"></i>
+                                    <span>Contact Enquries</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

@@ -23,7 +23,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-md-6">
                         <select class="form-select" name="userstatus" id="userSelect">
                             <option value="1">Active</option>
@@ -33,7 +33,26 @@
                     <div class="col-md-6">
                         <a href="javascript:void(0);" class="btn btn-success" id="searchCategorybyService"><i class="uil uil-search me-1"></i> Search User by Status</a>
                     </div>    
-                </div>    
+                </div>  
+                <form action="{{route("customerlistexport")}}" method="post">
+                    @csrf
+                    @method('POST')
+                    <div class="row mb-3 justify-content-end">
+                        {{-- <input type="hidden" name="form_type" value="2"> --}}
+                        <div class="col-3" id="FromDateShowHide">
+                            <label for="" class="form-label" >From Date</label>
+                            <input type="date" class="form-control" id="FromDate" name="fromDate">
+                        </div>
+                        <div class="col-3" id="ToDateShowHide">
+                            <label for="" class="form-label" >To Date</label>
+                            <input type="date" class="form-control" id="ToDate" name="toDate">
+                        </div>
+                        <div class="col-2"  id="DownloadBtnShowHide">
+                            <label for="" class="form-label" style="display: list-item;"> </label>
+                            <button type="submit" class="btn btn-success btn-success" href="javascript:void(0)">Download Excel</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- end card body-->
         </div>
@@ -73,7 +92,7 @@
                                     <td>{{ @$users->occupation }}</td>
                                     <td>{{ @$users->city }}</td>
                                     <td>{{ @$users->country }}</td>
-                                    <td> {{ date('d-m-Y', strtotime(@$users->created_at)) }}</td>
+                                    <td> {{ date('d-m-Y', strtotime(    @$users->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group mt-2 me-1">
                                             <button type="button" class="btn btn-secondary">Action</button>

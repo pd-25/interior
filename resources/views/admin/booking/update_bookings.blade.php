@@ -100,7 +100,15 @@
 <div class="row justify-content-center">
     <div class="col-sm-12 text-center">
         <div class="heading mb-3">
-            <h2 style="text-transform: uppercase">{{@$bookings->category}} REQUIREMENTS</h2>
+            <h2 style="text-transform: uppercase">
+                @if ($bookings->category =='home')
+                    Residential
+                @elseif($bookings->category =='office')
+                    OFFICE
+                @elseif($bookings->category =='retail')
+                    RETAIL 
+                @endif
+                REQUIREMENTS</h2>
         </div>
     </div>
 </div>
@@ -113,7 +121,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12  mb-2">
-                            <h4 style="text-transform: uppercase">{{@$bookings->category}}</h4>
+                            <h4 style="text-transform: uppercase">
+                                NEW
+                            </h4>
                         </div>
                         @if (@$bookings->category== 'office')
                             <div class="col-lg-12">

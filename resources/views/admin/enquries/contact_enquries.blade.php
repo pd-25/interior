@@ -23,14 +23,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="m-0">Enquries List</h5>
+                    <h5 class="m-0">Contact Enquries List</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{route("enquriesexport_data")}}" method="post">
                         @csrf
                         @method('POST')
                         <div class="row mb-3 justify-content-end">
-                            <input type="hidden" name="form_type" value="1">
+                            <input type="hidden" name="form_type" value="2">
                             <div class="col-3" id="FromDateShowHide">
                                 <label for="" class="form-label" >From Date</label>
                                 <input type="date" class="form-control" id="FromDate" name="fromDate">
@@ -52,8 +52,7 @@
                                     <th scope="col">SL</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Contact Details</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Page Reference</th>
+                                    <th scope="col">Message</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Created at</th>
                                     <th scope="col">Action</th>
@@ -69,13 +68,7 @@
                                         <div>{{@$item->email}}</div>
                                         <div>{{@$item->phoneNo}}</div>
                                     </td>
-                                    <td scope="row">
-                                        {{@$item->address}} <br>
-                                        {{@$item->city}} <br>
-                                        {{@$item->state}} <br>
-                                        {{@$item->pin_code}}
-                                    </td>
-                                    <td scope="row">{{@$item->page_ref}}</td>
+                                    <td scope="row">{{@$item->message}}</td>
                                     <td scope="row">
                                         @if (@$item->status == 0)
                                             <span class="text-info">Panding</span>

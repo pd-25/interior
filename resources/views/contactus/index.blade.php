@@ -39,7 +39,7 @@
                         <i class="fa fa-envelope ff20" aria-hidden="true"></i>
                     </div>
                     <div class="col-md-12 ps-0 fs-6 pt-1 mt-3 mb-4 fw-bolder">
-                        <h3 class="cad">  connect@iinteriofy.com <br>
+                        <h3 class="cad">  connect@iinteriofy.com <br> <br>
                             </h3>
 
                     </div>
@@ -51,7 +51,7 @@
                         <i class="fa fa-phone ff20" aria-hidden="true"></i>
                     </div>
                     <div class="col-md-12 ps-0 fs-6 pt-1 mt-3 mb-4 fw-bolder">
-                        <h3 class="cad">  +91 8826036989 <br>
+                        <h3 class="cad">  +91 8826036989 <br>  <br>
                             </h3>
 
                     </div>
@@ -85,7 +85,7 @@
                         @method('POST')
                         <!--<h4 class="fs-7 fw-bolder mb-4">Contact Form</h4>-->
                         <div class="mb-4">
-                            <label class="pt-2 llf" for="">Full Name :</label>
+                            {{-- <label class="pt-2 llf" for="">Full Name</label> --}}
                             <input type="text" placeholder="Enter Full Name" class="form-control mb-0" name="fullName" value="{{old('fullName')}}">
                             <span class="text-danger">
                                 @error('fullName')
@@ -94,7 +94,7 @@
                             </span>
                         </div>
                         <div class="mb-4">
-                            <label class="pt-2 llf" for="">Mobile Number :</label>
+                            {{-- <label class="pt-2 llf" for="">Mobile Number</label> --}}
                             <input type="text" name="phoneNo" placeholder="Enter Mobile Number" class="form-control mb-0" value="{{old('phoneNo')}}">
                             <span class="text-danger">
                                 @error('phoneNo')
@@ -103,7 +103,7 @@
                             </span>
                         </div>
                         <div class="mb-4">
-                            <label class="pt-2 llf" for="">Email Address :</label>
+                            {{-- <label class="pt-2 llf" for="">Email Address</label> --}}
                             <input type="text" name="email" placeholder="Enter Email Address" class="form-control mb-0" value="{{old('email')}}">
                             <span class="text-danger">
                                 @error('email')
@@ -111,8 +111,43 @@
                                 @enderror
                             </span>
                         </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-4">
+                                    {{-- <label class="pt-2 llf" for="">City</label> --}}
+                                    <input type="text" name="city" placeholder="Enter City" class="form-control mb-0" value="{{old('city')}}">
+                                    <span class="text-danger">
+                                        @error('city')
+                                        <strong>{{ $message }}</strong>
+                                        @enderror
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-4">
+                                    {{-- <label class="pt-2 llf" for="">State</label> --}}
+                                    <input type="text" name="state" placeholder="Enter State" class="form-control mb-0" value="{{old('state')}}">
+                                    <span class="text-danger">
+                                        @error('state')
+                                        <strong>{{ $message }}</strong>
+                                        @enderror
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-4">
+                                    {{-- <label class="pt-2 llf" for="">Pin Code</label> --}}
+                                    <input type="number" name="pin_code" placeholder="Enter Pin Code" class="form-control mb-0" value="{{old('pin_code')}}">
+                                    <span class="text-danger">
+                                        @error('email')
+                                        <strong>{{ $message }}</strong>
+                                        @enderror
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mb-4">
-                            <label class="pt-2 llf" for="">Type of Query :</label>
+                            {{-- <label class="pt-2 llf" for="">Type of Query</label> --}}
                             <select name="type_query" class="form-control from-select">
                                 <option value="Please Select Type of Query">Please Select Type of Query</option>
                                 <option value="Need To Design My Space">Need To Design My Space</option>
@@ -126,14 +161,15 @@
                             </span>
                         </div>
                         <div class="mb-4">
-                            <label class="pt-2 llf" for="">Message :</label>
-                            <textarea name="address" placeholder="Enter Your Text" rows="4" class="form-control" value="{{old('address')}}"></textarea>
+                            {{-- <label class="pt-2 llf" for="">Message</label> --}}
+                            <textarea name="message" placeholder="Enter Your Text" rows="3" class="form-control" value="{{old('message')}}"></textarea>
                             <span class="text-danger">
-                                @error('address')
+                                @error('message')
                                 <strong>{{ $message }}</strong>
                                 @enderror
                             </span>
                         </div>
+                        <input type="hidden" name="form_type" value="2">
                         <div class="submit-btn">
                             <button type="submit" class="btn csbf">Submit</button>
                         </div>

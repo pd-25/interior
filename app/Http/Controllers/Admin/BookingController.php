@@ -84,7 +84,12 @@ class BookingController extends Controller
         $to_date = request()->toDate; 
         $excelDownloadType = request()->excelDownloadType; 
         $category = request()->category;
-        
-        return Excel::download(new UsersExport($from_date, $to_date, $excelDownloadType, $category), 'Booking_list.xlsx');
+        if($category == 'home'){
+            return Excel::download(new UsersExport($from_date, $to_date, $excelDownloadType, $category), 'Home_Booking_list.xlsx');
+        }elseif($category == 'office'){
+            return Excel::download(new UsersExport($from_date, $to_date, $excelDownloadType, $category), 'Office_Booking_list.xlsx');
+        }elseif($category == 'retail'){
+            return Excel::download(new UsersExport($from_date, $to_date, $excelDownloadType, $category), 'Retail_Booking_list.xlsx');
+        }
     }
 }
