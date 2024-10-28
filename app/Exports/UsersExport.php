@@ -34,45 +34,114 @@ class UsersExport implements FromCollection, WithHeadings
             $booking = Booking::with('user_details')->whereBetween('created_at', [ $this->fromdate, $this->todate])->where('category', $this->category )->orderBy('id','desc')->get();
         }
         $finalArray = array();
-        foreach ($booking as $key => $value) {
-            if($value->status == 1){
-                $value->status = 'Approved';
-            } if($value->status == 2){
-                $value->status = 'Rejected';
-            }else{
-                $value->status = 'Pending';
+        if($this->category == 'home'){
+            foreach ($booking as $key => $value) {
+                if($value->status == 1){
+                    $value->status = 'Approved';
+                } if($value->status == 2){
+                    $value->status = 'Rejected';
+                }else{
+                    $value->status = 'Pending';
+                }
+                $tempArray = array(
+                    'id' => $key+1,
+                    'user_details' => $value->user_details->name .', '. $value->user_details->email .', '.$value->user_details->mobile_no,
+                    'category' => $value->category,
+                    'home_requirements'=> $value->home_requirements,
+                    'renovation'=> $value->renovation,
+                    'service'=> $value->service,
+                    'location' => $value->block . ', '.  $value->city . ', '. $value->district . ', '. $value->pincode,
+                    'budget' => $value->budget,
+                    'pincode' => $value->pincode,
+                    'date' => date('d-m-Y', strtotime($value->date)),
+                    'time' => date('h:i A', strtotime($value->time)),
+                    'status' => $value->status,
+                    'created_at' =>  date('d-m-Y h:i A', strtotime($value->created_at)),
+              );
+              array_push($finalArray, $tempArray);
             }
-          $tempArray = array(
-            'id' => $key+1,
-            'user_details' => $value->user_details->name .', '. $value->user_details->email .', '.$value->user_details->mobile_no,
-            'category' => $value->category,
-            'budget' => $value->budget,
-            'location' => $value->block . ', '.  $value->city . ', '. $value->district . ', '. $value->pincode,
-            'home_requirements'=> $value->home_requirements,
-            'renovation'=> $value->renovation,
-            'service'=> $value->service,
-            'number_of_cabins'=>$value->number_of_cabins,
-            'number_of_worksations'=>$value->number_of_worksations,
-            'total_carpet_area'=>$value->total_carpet_area,
-            'number_of_cabins_renovation'=>$value->number_of_cabins_renovation,
-            'number_of_worksations_renovation'=>$value->number_of_worksations_renovation,
-            'total_carpet_area_renovation'=>$value->total_carpet_area_renovation,
-            'total_area'=>$value->total_area,
-            'total_area_renovation'=>$value->total_area_renovation,
-            
-            'date' => date('d-m-Y h:i A', strtotime($value->date)),
-            'status' => $value->status,
-            'created_at' =>  date('d-m-Y h:i A', strtotime($value->created_at)),
-          );
-          array_push($finalArray, $tempArray);
+        }elseif($this->category == 'office'){
+            foreach ($booking as $key => $value) {
+                if($value->status == 1){
+                    $value->status = 'Approved';
+                } if($value->status == 2){
+                    $value->status = 'Rejected';
+                }else{
+                    $value->status = 'Pending';
+                }
+                $tempArray = array(
+                    'id' => $key+1,
+                    'user_details' => $value->user_details->name .', '. $value->user_details->email .', '.$value->user_details->mobile_no,
+                    'category' => $value->category,
+                    'location' => $value->block . ', '.  $value->city . ', '. $value->district . ', '. $value->pincode,
+                  
+                    
+                    'number_of_cabins'=>$value->number_of_cabins,
+                    'number_of_worksations'=>$value->number_of_worksations,
+                    'total_carpet_area'=>$value->total_carpet_area,
+                    
+                    'number_of_cabins_renovation'=>$value->number_of_cabins_renovation,
+                    'number_of_worksations_renovation'=>$value->number_of_worksations_renovation,
+                    'total_carpet_area_renovation'=>$value->total_carpet_area_renovation,
+                    
+                    'service'=> $value->service,
+                    
+                    // 'total_area'=>$value->total_area,
+                    // 'total_area_renovation'=>$value->total_area_renovation,
+                    
+                    'budget' => $value->budget,
+                    'pincode' => $value->pincode,
+
+                    'date' => date('d-m-Y', strtotime($value->date)),
+                    'time' => date('h:i A', strtotime($value->time)),
+                    'status' => $value->status,
+                    'created_at' =>  date('d-m-Y h:i A', strtotime($value->created_at)),
+              );
+              array_push($finalArray, $tempArray);
+            }
+        }elseif($this->category == 'retail'){
+            foreach ($booking as $key => $value) {
+                if($value->status == 1){
+                    $value->status = 'Approved';
+                } if($value->status == 2){
+                    $value->status = 'Rejected';
+                }else{
+                    $value->status = 'Pending';
+                }
+                $tempArray = array(
+                    'id' => $key+1,
+                    'user_details' => $value->user_details->name .', '. $value->user_details->email .', '.$value->user_details->mobile_no,
+                    'category' => $value->category,
+                    'location' => $value->block . ', '.  $value->city . ', '. $value->district . ', '. $value->pincode,
+                  
+                    'total_area'=>$value->total_area,
+                    'total_area_renovation'=>$value->total_area_renovation,
+                    
+                    'service'=> $value->service,
+                    
+                    'budget' => $value->budget,
+                    'pincode' => $value->pincode,
+
+                    'date' => date('d-m-Y', strtotime($value->date)),
+                    'time' => date('h:i A', strtotime($value->time)),
+                    'status' => $value->status,
+                    'created_at' =>  date('d-m-Y h:i A', strtotime($value->created_at)),
+              );
+            }
         }
         return collect($finalArray);
-        
         //return Booking::whereBetween('date', [ $this->fromdate, $this->todate])->get();
     }
 
     public function headings(): array
     {
-        return ["SL No", "user Details", "Category", "Budget", "Location", "Home Requirements","Renovation", "Service", "Number of Cabins", "Number of Worksations", "Total Carpet Area","Number of Cabins Renovation", "Number of Worksations Renovation", "Total Carpet Area Renovation", "Total Area", "Total Area Renovation", "Booking Date","Status", "Created Date"];
+        if($this->category == 'home'){
+            return ["SL No", "user Details", "Category", "Home Requirements","Renovation", "Service",  "Location", "Budget", "Pincode", "Booking Date", "Time", "Status", "Created Date"];
+        }elseif($this->category == 'office'){
+            return ["SL No", "user Details", "Category", "Location",   "Number of Cabins", "Number of Worksations", "Total Carpet Area","Number of Cabins Renovation", "Number of Worksations Renovation", "Total Carpet Area Renovation", "Service", "Budget", "Pincode", "Booking Date", "Time", "Status", "Created Date"];
+        }elseif($this->category == 'retail'){
+            return ["SL No", "user Details", "Category", "Location",  "Total Area", "Total Area Renovation", "Budget", "Pincode",  "Booking Date", "Time", "Status", "Created Date"];
+        }
     }
+
 }

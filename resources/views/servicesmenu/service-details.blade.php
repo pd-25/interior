@@ -103,7 +103,7 @@
                                             @method('POST')
                                             <div class="form-group">
                                                 <input type="text" name="fullName" class="form-control"
-                                                    placeholder="First Name" value="" />
+                                                    placeholder="Enter full name" value="" />
                                                 <span class="text-danger">
                                                     @error('fullName')
                                                         <strong>{{ $message }}</strong>
@@ -111,7 +111,7 @@
                                                 </span>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Email"
+                                                <input type="text" class="form-control" placeholder="Enter your email"
                                                     name="email">
                                                 <span class="text-danger">
                                                     @error('email')
@@ -130,7 +130,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control"
-                                                    placeholder="Enter your current residence address with pincode"
+                                                    placeholder="Enter your current residence address"
                                                     name="address" />
                                                 <span class="text-danger">
                                                     @error('address')
@@ -138,6 +138,45 @@
                                                     @enderror
                                                 </span>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-6 mb-3">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter your city"
+                                                            name="city" value="{{ old('city') }}" />
+                                                        <span class="text-danger">
+                                                            @error('city')
+                                                                <strong>{{ $message }}</strong>
+                                                            @enderror
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter your state"
+                                                            name="state" value="{{ old('state') }}" />
+                                                        <span class="text-danger">
+                                                            @error('state')
+                                                                <strong>{{ $message }}</strong>
+                                                            @enderror
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter your Pin Code"
+                                                            name="pin_code" value="{{ old('pin_code') }}" />
+                                                        <span class="text-danger">
+                                                            @error('pin_code')
+                                                                <strong>{{ $message }}</strong>
+                                                            @enderror
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="form_type" value="1">
                                             @php
                                                 $pageUrl = url()->current();
                                                 $pageUrlsplite = explode("services",$pageUrl);

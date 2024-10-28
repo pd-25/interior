@@ -16,7 +16,7 @@ class EnquriesController extends Controller
      */
     public function index()
     {
-        $enquiry = Enquries::orderBy('id', 'desc')->paginate(20);
+        $enquiry = Enquries::where('type_query', null)->orderBy('id', 'desc')->paginate(20);
         return view('admin.enquries.enquries', compact('enquiry'));
     }
 
@@ -25,7 +25,8 @@ class EnquriesController extends Controller
      */
     public function create()
     {
-        //
+        $enquiry = Enquries::where('type_query','!=', null)->orderBy('id', 'desc')->paginate(20);
+        return view('admin.enquries.contact_enquries', compact('enquiry'));
     }
 
     /**
@@ -90,8 +91,13 @@ class EnquriesController extends Controller
 
     public function enquriesexport(Request $request) 
     {
+        $form_type = $request->form_type;
         $from_date = request()->fromDate;
         $to_date = request()->toDate; 
-        return Excel::download(new EnquiryExport($from_date, $to_date), 'Enquiry_list.xlsx');
+        if( $form_type == 1){
+            return Excel::download(new EnquiryExport($form_type, $from_date, $to_date), 'Enquiry_list.xlsx');
+        }else{
+            return Excel::download(new EnquiryExport($form_type, $from_date, $to_date), 'Contact_Enquiry_list.xlsx');
+        }
     }
 }

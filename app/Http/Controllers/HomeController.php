@@ -149,7 +149,10 @@ class HomeController extends Controller
             'fullName' => 'required|string',
             'phoneNo' => 'required|min:11|numeric',
             'email' => 'required|email:rfc,dns',
-            'address' => 'required|string',
+            // 'address' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'pin_code'=> 'required|numeric',
         ]);
         $enquiry = new Enquries;
         $ip = request()->ip();
@@ -164,11 +167,18 @@ class HomeController extends Controller
         $enquiry->fullName = $request->fullName;
         $enquiry->phoneNo = $request->phoneNo;
         $enquiry->email = $request->email;
-        $enquiry->type_query = $request->type_query;
+        $enquiry->city = $request->city;
+        $enquiry->state = $request->state;
+        $enquiry->pin_code = $request->pin_code;
         $enquiry->status = 0;
-        $enquiry->address = $request->address;
-        $page_ref = preg_replace('/\//', '', $request->page_ref);
-        $enquiry->page_ref = str::upper($page_ref);
+        if($request->form_type == 1){
+            $enquiry->address = $request->address;
+            $page_ref = preg_replace('/\//', '', $request->page_ref);
+            $enquiry->page_ref = str::upper($page_ref);
+        }else{
+            $enquiry->message = $request->message;
+            $enquiry->type_query = $request->type_query;
+        }
         if($enquiry->save())
         {
             return redirect()->back()->with('success', 'Thank you. We have received your enquiry. Someone from our team will contact you shortly.');

@@ -70,7 +70,17 @@
                     <span class="form-label fw-bold">Page Reference</span>
                     <p >{{@$enquiry->page_ref}}</p>
                 </div>
-                {{-- <div class="col-md-4">
+                <div class="col-md-12">
+                    @if (@$enquiry->type_query)
+                    <span class="form-label fw-bold">Message</span>
+                    <p >{{@$enquiry->message}}</p>
+
+                    @else
+                    <span class="form-label fw-bold">Address</span>
+                    @endif
+                    <p >{{@$enquiry->address}}</p>
+                </div>
+                <div class="col-md-4">
                     <span class="form-label fw-bold">State</span>
                     <p >{{$enquiry->state}}</p>
                 </div>
@@ -79,6 +89,10 @@
                     <p >{{$enquiry->city}}</p>
                 </div>
                 <div class="col-md-4">
+                    <span class="form-label fw-bold">Pin Code</span>
+                    <p >{{$enquiry->pin_code}}</p>
+                </div>
+                {{-- <div class="col-md-4">
                     <span class="form-label fw-bold">Latitude</span>
                     <p >{{$enquiry->latitude}}</p>
                 </div>
@@ -86,14 +100,6 @@
                     <span class="form-label fw-bold">Longitude</span>
                     <p >{{$enquiry->longitude}}</p>
                 </div> --}}
-                <div class="col-md-12">
-                    @if (@$enquiry->type_query)
-                    <span class="form-label fw-bold">Message</span>
-                    @else
-                    <span class="form-label fw-bold">Address</span>
-                    @endif
-                    <p >{{@$enquiry->address}}</p>
-                </div>
             </div>
         </div>
     </div>
