@@ -551,7 +551,7 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <input type="number" class="form-control"
                                                             placeholder="Enter your Pin Code"
