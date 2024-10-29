@@ -53,6 +53,9 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Contact Details</th>
                                     <th scope="col">Address</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Pincode</th>
                                     <th scope="col">Page Reference</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Created at</th>
@@ -70,11 +73,11 @@
                                         <div>{{@$item->phoneNo}}</div>
                                     </td>
                                     <td scope="row">
-                                        {{@$item->address}} <br>
-                                        {{@$item->city}} <br>
-                                        {{@$item->state}} <br>
-                                        {{@$item->pin_code}}
+                                        {{@$item->address}}
                                     </td>
+                                    <td>{{@$item->city}} </td>
+                                    <td>{{@$item->state}}</td>
+                                    <td>{{@$item->pin_code}}</td>
                                     <td scope="row">{{@$item->page_ref}}</td>
                                     <td scope="row">
                                         @if (@$item->status == 0)
