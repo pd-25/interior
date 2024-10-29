@@ -56,6 +56,6 @@ class PartnerExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ["SL No", "Full Name", "Email", "Phone No", "Firm Name", "Partner Code", "Phone No", "Address", "City", "State",'Pin Code', 'Page Referance','Created At'];
+        return ["SL No", "Full Name", "Email", "Phone No", "Firm Name", "Partner Code", "PAN", "GST", "City", "Address",'How Many Years', 'Major Category', 'Minor Category', 'Partner Portfolio', 'Created At'];
     }
 }

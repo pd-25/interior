@@ -52,6 +52,9 @@
                                     <th scope="col">SL</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Contact Details</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Pincode</th>
                                     <th scope="col">Message</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Created at</th>
@@ -68,6 +71,9 @@
                                         <div>{{@$item->email}}</div>
                                         <div>{{@$item->phoneNo}}</div>
                                     </td>
+                                    <td>{{@$item->city}} </td>
+                                    <td>{{@$item->state}}</td>
+                                    <td>{{@$item->pin_code}}</td>
                                     <td scope="row">{{@$item->message}}</td>
                                     <td scope="row">
                                         @if (@$item->status == 0)
