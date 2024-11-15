@@ -40,6 +40,7 @@
 
   gtag('config', 'G-W8S2L1S8ZN');
 </script>
+<meta name="keywords" content="interior design , interiors, residential design , commercial design, retail design, interior designer, interior contractor, architect, contractor, turnkey contractor, interior design solutions, interior design for office  spaces, office design, corporate office, office market, furnished office space, home interiors, home renovation, designer homes">
 </head>
 
 <body>
