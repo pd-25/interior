@@ -85,7 +85,8 @@ class HomeController extends Controller
             'full_name' => 'required',
             'firm_name' => 'required',
             'mobile_no' => 'required|min:11|numeric',
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,NULL,id,type,partner'
         ]);
         DB::beginTransaction();
         try {
