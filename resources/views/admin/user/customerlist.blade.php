@@ -23,36 +23,31 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <select class="form-select" name="userstatus" id="userSelect">
-                            <option value="1">Active</option>
-                            <option value="0">Deactive</option>
-                        </select>
+                <div class="row">
+                    <div class="col-md-7">
+                        <form action="{{ route('customerlistexport') }}" method="post">
+                            @csrf
+                            @method('POST')
+                            <div class="row">
+                                {{-- <input type="hidden" name="form_type" value="2"> --}}
+                                <div class="col-3" id="FromDateShowHide">
+                                    <label for="" class="form-label">From Date</label>
+                                    <input type="date" class="form-control" id="FromDate" name="fromDate">
+                                </div>
+                                <div class="col-3" id="ToDateShowHide">
+                                    <label for="" class="form-label">To Date</label>
+                                    <input type="date" class="form-control" id="ToDate" name="toDate">
+                                </div>
+                                <div class="col-2" id="DownloadBtnShowHide">
+                                    <label for="" class="form-label" style="display: list-item;"> </label>
+                                    <button type="submit" class="btn btn-success btn-success"
+                                        href="javascript:void(0)">Download Excel</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                        <a href="javascript:void(0);" class="btn btn-success" id="searchCategorybyService"><i class="uil uil-search me-1"></i> Search User by Status</a>
-                    </div>    
-                </div>  
-                <form action="{{route("customerlistexport")}}" method="post">
-                    @csrf
-                    @method('POST')
-                    <div class="row mb-3 justify-content-end">
-                        {{-- <input type="hidden" name="form_type" value="2"> --}}
-                        <div class="col-3" id="FromDateShowHide">
-                            <label for="" class="form-label" >From Date</label>
-                            <input type="date" class="form-control" id="FromDate" name="fromDate">
-                        </div>
-                        <div class="col-3" id="ToDateShowHide">
-                            <label for="" class="form-label" >To Date</label>
-                            <input type="date" class="form-control" id="ToDate" name="toDate">
-                        </div>
-                        <div class="col-2"  id="DownloadBtnShowHide">
-                            <label for="" class="form-label" style="display: list-item;"> </label>
-                            <button type="submit" class="btn btn-success btn-success" href="javascript:void(0)">Download Excel</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
+
             </div>
             <!-- end card body-->
         </div>
@@ -65,6 +60,26 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
+            <div class="m-2">
+                <form action="{{ route('customerlist') }}" method="get">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Search by name, email" class="form-control"
+                                name="searchText">
+                        </div>
+                        {{-- <div class="col-md-4">
+                            <select class="form-select" name="userstatus" id="userSelect">
+                                <option value="1">Active</option>
+                                <option value="0">Deactive</option>
+                            </select>
+                        </div> --}}
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-success btn-success">Search</button>
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
             <div class="card-body">
                 <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                     <thead>
@@ -92,7 +107,7 @@
                                     <td>{{ @$users->occupation }}</td>
                                     <td>{{ @$users->city }}</td>
                                     <td>{{ @$users->country }}</td>
-                                    <td> {{ date('d-m-Y', strtotime(    @$users->created_at)) }}</td>
+                                    <td> {{ date('d-m-Y', strtotime(@$users->created_at)) }}</td>
                                     <td>
                                         <div class="btn-group mt-2 me-1">
                                             <button type="button" class="btn btn-secondary">Action</button>
@@ -249,7 +264,7 @@
     }
 </script>
 
-{{-- <script>
+<script>
     $(document).ready(function() {
         $('#userSelect').change(function() {
             var status = $(this).val();
@@ -268,7 +283,7 @@
             });
         });
     });
-</script> --}}
+</script>
 
 
 @push('scripts')

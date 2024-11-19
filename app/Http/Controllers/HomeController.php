@@ -89,7 +89,7 @@ class HomeController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            if (User::where('mobile_no', $request->mobile_no)->exists() || User::where('email', $request->email)->exists()) {
+            if (User::where('type','partner')->where('mobile_no', $request->mobile_no)->exists() || User::where('type','partner')->where('email', $request->email)->exists()) {
                 return response()->json("userexist");
             } else {
                 $user = new User();
@@ -100,7 +100,7 @@ class HomeController extends Controller
                 $user->save();
                 
                 $userid = $user->id;
-                $partner_id = "Prtnr-" . $this->generateRandomUuid();
+                $partner_id = "INT-" . $this->generateRandomUuid();
                 $partner = new Partner();
                 $partner->users_id = $userid;
                 $partner->partner_id = $partner_id;

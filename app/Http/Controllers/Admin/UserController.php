@@ -14,16 +14,38 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
-    function partnerlist()
+    function partnerlist(Request $request)
     {
-        $user = Partner::orderBy('id', 'desc')->get();
+        $query = Partner::with('user');
+        if ($request->has('searchText') && $request->searchText != '') {
+            $searchText = $request->searchText;
+            $query->whereHas('user', function ($q) use ($searchText) {
+                $q->where('name', 'like', '%' . $searchText . '%')
+                    ->orWhere('email', 'like', '%' . $searchText . '%');
+            });
+        }
+
+        // Get the filtered partners
+        $user = $query->orderBy('id', 'desc')->get();
         return view('admin.user.partnerlist', compact('user'));
     }
 
     function customerlist(Request $req)
     {
 
-        $user = User::where('type', 'user')->get();
+        $query = User::where('type', 'user');
+        if ($req->has('searchText') && $req->searchText != '') {
+            $searchText = $req->searchText;
+            $query->where(function ($q) use ($searchText) {
+                $q->where('name', 'like', '%' . $searchText . '%')
+                    ->orWhere('email', 'like', '%' . $searchText . '%');
+            });
+        }
+        if ($req->has('userstatus')) {
+            $userStatus = $req->userstatus;
+            $query->where('status', $userStatus);
+        }
+        $user = $query->get();
         return view('admin.user.customerlist', compact('user'));
     }
 
@@ -49,14 +71,13 @@ class UserController extends Controller
         return response()->json(['message' => 'User updated successfully']);
     }
 
-    public function partnerdetails ($id)
+    public function partnerdetails($id)
     {
         $user = User::with('partner')->find($id);
         return view('admin.user.partner_edit', compact('user'));
-
     }
 
-    public function partnerupdate (Request $request, $id)
+    public function partnerupdate(Request $request, $id)
     {
         $user = User::find($id);
         $user->name = $request->full_name;
@@ -70,7 +91,7 @@ class UserController extends Controller
         $user->dob = $request->dob;
         $user->occupation = $request->occupation;
         $user->save();
-        
+
         $partner = Partner::where('users_id', $id)->first();
         $partner->firm_name = $request->firm_name;
         $partner->firm_pan = $request->firm_pan;
@@ -80,7 +101,7 @@ class UserController extends Controller
         $partner->how_many_years = $request->how_many_years;
 
         $partner->city = $request->city;
-        $partner->major_category = implode(',',$request->major_category);
+        $partner->major_category = implode(',', $request->major_category);
         $partner->minor_category = $request->minor_category;
         $partner->partnerportfolio = $request->partnerportfolio;
         $partner->save();
@@ -97,18 +118,17 @@ class UserController extends Controller
         return back()->with('success', 'Deleted successfully');
     }
 
-    public function partnerexport(Request $request) 
+    public function partnerexport(Request $request)
     {
         $from_date = request()->fromDate;
-        $to_date = request()->toDate; 
+        $to_date = request()->toDate;
         return Excel::download(new PartnerExport($from_date, $to_date), 'Partner_list.xlsx');
     }
 
-    public function customerexport(Request $request) 
+    public function customerexport(Request $request)
     {
         $from_date = request()->fromDate;
-        $to_date = request()->toDate; 
+        $to_date = request()->toDate;
         return Excel::download(new CustomerExport($from_date, $to_date), 'Customer_list.xlsx');
     }
-    
 }
