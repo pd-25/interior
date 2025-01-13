@@ -21,16 +21,22 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        return view('home.index', [
+            'title' => 'Home'
+        ]);
     }
     public function partner_with_us()
     {
-        return view('partnerwithus.index');
+        return view('partnerwithus.index',[
+            'title' => 'Partner With Us'
+        ]);
     }
 
     public function architecture()
     {
-        return view('servicesmenu.architecture');
+        return view('servicesmenu.architecture',[
+            'title' => 'Architecture'
+        ]);
     }
 
     public function serviceDetails($slug)
@@ -46,8 +52,9 @@ class HomeController extends Controller
 
         $serviceSliders = $serviceDetails->serviceimage()->get();
         $serviceCatSliders = $serviceDetails->servicecategory()->with('servicecategoryimage')->get();
+        $title = $serviceDetails?->name ?? '';
         //dd($serviceCatSliders);
-        return view('servicesmenu.service-details', compact('serviceDetails', 'serviceBanners', 'serviceCatSliders', 'serviceSliders'));
+        return view('servicesmenu.service-details', compact('serviceDetails', 'serviceBanners', 'serviceCatSliders', 'serviceSliders', 'title'));
     }
 
     // public function hvac_consultation(){
@@ -56,14 +63,17 @@ class HomeController extends Controller
 
     public function blogs()
     {
-        return view('blogs.blog');
+        return view('blogs.blog',[
+            'title' => 'Blogs'
+        ]);
     }
 
     public function blog_details(Request $request, $id)
     {
         $id = decrypt($id);
         $blogs = Blog::where('id', $id)->first();
-        return view('blogs.blog-details', compact('blogs'));
+        $title = $blogs?->title ?? '';
+        return view('blogs.blog-details', compact('blogs', 'title'));
     }
 
     public function generateRandomUuid()
@@ -135,13 +145,15 @@ class HomeController extends Controller
     public function about_us()
     {
         $aboutus = Aboutus::first();
-        return view('aboutus.index', compact('aboutus'));
+        $title = 'About us';
+        return view('aboutus.index', compact('aboutus', 'title'));
     }
 
     public function contact_us()
     {
         $contact = Contactus::first();
-        return view('contactus.index', compact('contact'));
+        $title = 'Contact us';
+        return view('contactus.index', compact('contact', 'title'));
     }
 
     public function storeEnquries(Request $request)
@@ -216,19 +228,23 @@ class HomeController extends Controller
             $user_logged_in = false;
         }
         $partners = User::where('type', '=', 'partner')->with('partner')->get();
-        return view('services.home', compact('partners', 'user_logged_in'));
+        $title = 'RESIDENTIAL';
+
+        return view('services.home', compact('partners', 'user_logged_in', 'title'));
     }
 
     public function office_services()
     {
         $partners = User::where('type', '=', 'partner')->with('partner')->get();
-        return view('services.office', compact('partners'));
+        $title = 'OFFICE';
+        return view('services.office', compact('partners', 'title'));
     }
 
     public function retail_services()
     {
         $partners = User::where('type', '=', 'partner')->with('partner')->get();
-        return view('services.retail', compact('partners'));
+        $title = 'RETAIL';
+        return view('services.retail', compact('partners', 'title'));
     }
 
     public function booking(Request $request)
@@ -313,7 +329,9 @@ class HomeController extends Controller
 
 
     public function privacyPolicy() {
-        return view('privacy-policy');
+        return view('privacy-policy', [
+            'title' => 'Privacy Policy'
+        ]);
     }
 
 }

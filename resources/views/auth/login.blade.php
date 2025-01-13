@@ -1,5 +1,4 @@
 @include('include.header')
-
     <!-- banner sec -->
      <section class="banner_sec">
         <div class="container">

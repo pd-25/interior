@@ -19,7 +19,8 @@ class DashboardController extends Controller
 
     public function index(Request $request){
         $booking = Booking::with('partner_details')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
-        return view('dashboard.index', compact('booking'));
+        $title = auth()->user()->name ?? 'Profile';
+        return view('dashboard.index', compact('booking', 'title'));
      }
 
      public function partner_dashboard(Request $request)
@@ -31,6 +32,7 @@ class DashboardController extends Controller
         $data['home'] = Booking::where('expert_id', auth()->user()->id)->where('category', 'home')->count();
         $data['office'] = Booking::where('expert_id', auth()->user()->id)->where('category', 'office')->count();
         $data['retail'] = Booking::where('expert_id', auth()->user()->id)->where('category', 'retail')->count();
+        $data['title'] = 'Partner Dashboard';
         return view('partnerdashboard.index', $data);
      }
 

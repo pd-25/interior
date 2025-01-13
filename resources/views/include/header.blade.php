@@ -7,7 +7,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-     <title>INTERIOR</title>
+     <title>IINTERIOFY | {{$title ?? ''}}</title>
+     <link rel="icon" type="image/x-icon" href="{{ asset('images/new-logo.jpeg') }}">
      <!-- favicon -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">

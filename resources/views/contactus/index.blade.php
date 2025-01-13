@@ -1,5 +1,5 @@
 @include('include.header')
-
+@section('title', 'Contact us')
 <section class="inner_banner inner_bannerContact">
 </section>
 
