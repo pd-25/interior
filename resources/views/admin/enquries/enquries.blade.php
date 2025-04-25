@@ -57,6 +57,7 @@
                                     <th scope="col">State</th>
                                     <th scope="col">Pincode</th>
                                     <th scope="col">Page Reference</th>
+                                    <th scope="col">Type Of Enquiry</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Created at</th>
                                     <th scope="col">Action</th>
@@ -79,6 +80,7 @@
                                     <td>{{@$item->state}}</td>
                                     <td>{{@$item->pin_code}}</td>
                                     <td scope="row">{{@$item->page_ref}}</td>
+                                    <td scope="row">{{@$item->type_of_enquery ?? 'N/A'}}</td>
                                     <td scope="row">
                                         @if (@$item->status == 0)
                                             <span class="text-info">Panding</span>

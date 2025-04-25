@@ -183,6 +183,7 @@ class HomeController extends Controller
         $enquiry->city = $request->city;
         $enquiry->state = $request->state;
         $enquiry->pin_code = $request->pin_code;
+        $enquiry->type_of_enquery = $request->type_of_enquery;
         $enquiry->status = 0;
         if($request->form_type == 1){
             $enquiry->address = $request->address;

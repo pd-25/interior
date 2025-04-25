@@ -12,137 +12,141 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
+                
                 <div class="col-12">
-                    <h4>Get request from Area</h4>
-                </div>
-                <div class="col-12 mb-3">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="col-12">
-                    <h4>Most Services Requested</h4>
+                    <h4>Monthly Services Requested</h4>
                 </div>
                 <div class="col-12">
                     <canvas id="myChartII"></canvas>
                 </div>
                 <div class="col-12">
-                  <h4>Total partners onboarded</h4>
-              </div>
+                    <h4>Monthly partners onboarded</h4>
+                </div>
                 <div class="col-12">
-                  <canvas id="ChartIII"></canvas>
+                    <canvas id="ChartIII"></canvas>
+                </div>
+                <div class="col-12">
+                  <h4>Get request from Area</h4>
+              </div>
+              <div class="col-12 mb-3">
+                  <canvas id="myChart"></canvas>
               </div>
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <script>
     const ctx = document.getElementById('myChart');
     const ctxII = document.getElementById('myChartII');
     const ctxIII = document.getElementById('ChartIII');
-  
+    const currentYear = new Date().getFullYear();
+
     new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: {!! json_encode($data['finalCitys']) !!},
-        datasets: [{
-          label: 'Area wise leads',
-          data: {!! json_encode($data['TotalCounts']) !!},
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($data['finalCitys']) !!},
+            datasets: [{
+                label: 'Area wise leads',
+                data: {!! json_encode($data['TotalCounts']) !!},
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
     });
 
-    new Chart(ctxII, {
-      type: 'bar',
-      data: {
-        // ['Architecture', 'HVAC', 'Design', 'Electrical', 'Contractor', 'Civil & Structural', 'Painting','Plumbing', 'Furniture & Pictures']
-        //labels: {!! json_encode($data['serviceName']) !!},
-        datasets: [{
-          label: 'Service wise leads',
-          data: {!! json_encode($data['serviceCount']) !!},
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
-            ],
-            borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
-            ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
 
+    new Chart(document.getElementById('myChartII'), {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($data['serviceRequestMonths']) !!},
+            datasets: {!! json_encode($data['serviceRequestCounts']) !!}
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Monthly Service Requests' + ' (' + currentYear + ')'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Requests'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                }
+            }
+        }
+    });
     new Chart(ctxIII, {
-      type: 'bar',
-      data: {
-        // ['Architecture', 'HVAC', 'Design', 'Electrical', 'Contractor', 'Civil & Structural', 'Painting','Plumbing', 'Furniture & Pictures']
-        labels: {!! json_encode($data['finalTotalMonth']) !!},
-        datasets: [{
-          label: 'Month wise Partners Onborded',
-          data: {!! json_encode($data['TotaluserCounts']) !!},
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
-            ],
-            borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)',
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)'
-            ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($data['finalTotalMonth']) !!},
+            datasets: [{
+                label: 'Month wise Partners Onboarded',
+                data: {!! json_encode($data['TotaluserCounts']) !!},
+                borderWidth: 2,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Monthly Partner Onboardings' + ' (' + currentYear + ')'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Partners'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                }
+            }
         }
-      }
     });
 </script>
 

@@ -163,7 +163,23 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="col-12">
+                                                <div class="col-6 mb-3">
+                                                    <div class="form-group">
+                                                        <select name="type_of_enquery" class="form-control" id="" value="{{ old('type_of_enquery') }}">
+                                                            <option value="">TYPE OF ENQUIRY</option>
+                                                            <option value="Residential">Residential</option>
+                                                            <option value="Office ">Office </option>
+                                                            <option value="Retail">Retail</option>
+                                                        </select>
+                                                        
+                                                        <span class="text-danger">
+                                                            @error('type_of_enquery')
+                                                                <strong>{{ $message }}</strong>
+                                                            @enderror
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
                                                     <div class="form-group">
                                                         <input type="number" class="form-control"
                                                             placeholder="Enter your Pin Code"
