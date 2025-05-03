@@ -152,6 +152,9 @@
                         ?>
                     </tbody>
                 </table>
+                <div>
+                    {{$user->links()}}
+                </div>
             </div>
             <!-- end card body-->
         </div>

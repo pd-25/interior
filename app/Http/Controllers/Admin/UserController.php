@@ -28,7 +28,7 @@ class UserController extends Controller
         }
 
         // Get the filtered partners
-        $user = $query->orderBy('id', 'desc')->get();
+        $user = $query->orderBy('id', 'desc')->paginate(20);
         return view('admin.user.partnerlist', compact('user'));
     }
 
