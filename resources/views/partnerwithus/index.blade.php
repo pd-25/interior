@@ -1,8 +1,35 @@
 @include('include.header')
 <style>
-    .major_category{
+    .major_category {
         margin-right: 0px !important
     }
+
+    /* Style for the loader */
+    .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .btn-loading {
+        pointer-events: none;
+        /* Prevent any further clicks while loading */
+    }
+</style>
+
 </style>
 <!-- Office Interior Banner -->
 <div class="interior-banner">
@@ -366,24 +393,32 @@
                                             <div class="col-md-12 form-group mb-4">
                                                 <label for="city" class="form-label">Primary City of Operations
                                                     <span class="text-warning">(you should be living here to undertake
-                                                        projects, meet customers and visit sites)</span></label>
+                                                        projects, meet customers and visit sites)</span>
+                                                </label>
                                                 <select name="city" id="city" class="form-control">
                                                     <option value="" selected>Select City</option>
-                                                    <option value="Delhi">Delhi</option>
-                                                    <option value="Hyderabad">Hyderabad</option>
-                                                    <option value="Bangalore">Bangalore</option>
-                                                    <option value="Pune">Pune</option>
-                                                    <option value="Thane">Thane</option>
-                                                    <option value="Gurgaon">Gurgaon</option>
-                                                    <option value="Gaziabad">Gaziabad</option>
-                                                    <option value="Lucknow">Lucknow</option>
-                                                    <option value="Faridabad">Faridabad</option>
-                                                    <option value="Mumbai">Mumbai</option>
+                                                    @forelse ($cities as $city)
+                                                        <option value="{{ $city->id }}">{{ $city->city_name }}
+                                                        </option>
+                                                    @empty
+                                                        <option value="">No City Found</option>
+                                                    @endforelse
                                                 </select>
                                                 @error('city')
                                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                                 @enderror
                                             </div>
+
+                                            <div class="col-md-12 form-group mb-4">
+                                                <label for="sub_city" class="form-label">Areas of Operations</label>
+                                                <select name="sub_city" id="sub_city" class="form-control">
+                                                    <option value="" selected>Select Area</option>
+                                                </select>
+                                                @error('sub_city')
+                                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
 
                                             <div class="col-md-12 form-group mb-4">
                                                 <label for="how_many_years" class="form-label">How many years you have
@@ -563,8 +598,11 @@
                     <div class="buttonsGroups button-bg">
                         <button class="action back btn btn-outline-info">Back</button>
                         <button class="action next btn btn-outline-success">Next</button>
-                        <button class="action submit btn btn-success" onclick="return SavePartner()">Generate Your
-                            Partner ID</button>
+                        <button id="generateBtn" class="action submit btn btn-success"
+                            onclick="return SavePartner()">
+                            <span id="button-text">Generate Your Partner ID</span>
+                            <div id="loader" class="loader" style="display: none; margin-left: 10px;"></div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -575,6 +613,13 @@
 @push('scripts')
     <script>
         function SavePartner() {
+            var btn = $("#generateBtn");
+            var loader = $("#loader");
+            var buttonText = $("#button-text");
+
+            // Show the loader and hide the button text
+            loader.show();
+            buttonText.hide();
             var mobile_no = $("#mobile_no").val();
             var email = $("#email").val();
             var full_name = $("#full_name").val();
@@ -586,6 +631,7 @@
             var how_many_years = $("#how_many_years").val();
 
             var city = $("#city").val();
+            var sub_city = $("#sub_city").val();
 
             var firm_type = $('input[name="firm_type"]:checked').val();
 
@@ -608,7 +654,7 @@
             form_data.append('firm_pan', firm_pan);
             form_data.append('firm_gst', firm_gst);
             form_data.append('city', city);
-
+            form_data.append('sub_city', sub_city);
             form_data.append('official_company_address', official_company_address);
             form_data.append('how_many_years', how_many_years);
 
@@ -627,6 +673,8 @@
                 contentType: false,
                 data: form_data,
                 success: (response) => {
+                    loader.hide();
+                    buttonText.show();
                     console.log(response.data);
                     if (response.status == "success") {
                         Swal.fire({
@@ -651,11 +699,44 @@
 
                 },
                 error: (response) => {
+                    loader.hide();
+                    buttonText.show();
                     console.log(response);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Some error occur!",
+                        footer: ''
+                    });
                 }
             });
 
         }
+    </script>
+
+    <script>
+        $('#city').on('change', function() {
+            var cityId = $(this).val();
+            if (cityId) {
+                $.ajax({
+                    url: '/get-sub-cities/' + cityId,
+                    type: 'GET',
+                    success: function(response) {
+                        $('#sub_city').empty().append(
+                            '<option value="">Select Area</option>');
+                        response.subCities.forEach(function(subCity) {
+                            $('#sub_city').append('<option value="' + subCity.id + '">' +
+                                subCity.sub_city_name + '</option>');
+                        });
+                    },
+                    error: function() {
+                        alert('Failed to fetch sub-cities. Please try again.');
+                    }
+                });
+            } else {
+                $('#sub_city').empty().append('<option value="">Select Area</option>');
+            }
+        });
     </script>
 @endpush
 @include('include.footer')

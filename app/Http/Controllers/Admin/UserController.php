@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Partner;
 use App\Exports\PartnerExport;
 use App\Exports\CustomerExport;
+use App\Models\PartentServiceCity;
+use App\Models\SubCities;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Facades\Excel;
@@ -74,7 +76,9 @@ class UserController extends Controller
     public function partnerdetails($id)
     {
         $user = User::with('partner')->find($id);
-        return view('admin.user.partner_edit', compact('user'));
+        $cities = PartentServiceCity::where('city_status', 1)->get();
+        $subcities = SubCities::where('sub_city_status', 1)->get();
+        return view('admin.user.partner_edit', compact('user', 'cities', 'subcities'));
     }
 
     public function partnerupdate(Request $request, $id)
@@ -101,6 +105,7 @@ class UserController extends Controller
         $partner->how_many_years = $request->how_many_years;
 
         $partner->city = $request->city;
+        $partner->sub_city_id = $request->sub_city_id;
         $partner->major_category = implode(',', $request->major_category);
         $partner->minor_category = $request->minor_category;
         $partner->partnerportfolio = $request->partnerportfolio;

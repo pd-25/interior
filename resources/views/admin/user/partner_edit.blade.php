@@ -7,7 +7,7 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('partnerlist')}}">Partner List</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('partnerlist') }}">Partner List</a></li>
                     <li class="breadcrumb-item active">
                         <a href="#" style="color: #6600ff;">Partner Details Edit</a>
                     </li>
@@ -18,16 +18,17 @@
 </div>
 
 <div class="container">
-    <form action="{{route('partnerupdate', $user->id)}}">
+    <form action="{{ route('partnerupdate', $user->id) }}">
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @if(session()->has('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session()->get('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+                    @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session()->get('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
                     <div class="col-6 mb-2">
                         <div class="fw-bold h6">
                             Partner Details
@@ -35,44 +36,45 @@
                         {{-- {{(($user->partner->major_category))}} --}}
                     </div>
                     <div class="col-6 mb-2 text-end">
-                        <span>#Partner Id:  </span> <span class="fw-bold">{{@$user->partner->partner_id}}</span>
+                        <span>#Partner Id: </span> <span class="fw-bold">{{ @$user->partner->partner_id }}</span>
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Name</label>
-                        <input type="text" class="form-control" name="full_name" value="{{@$user->name}}"/>
+                        <input type="text" class="form-control" name="full_name" value="{{ @$user->name }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Email</label>
-                        <input type="text" class="form-control" name="email" value="{{@$user->email}}"/>
+                        <input type="text" class="form-control" name="email" value="{{ @$user->email }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Mobile No</label>
-                        <input type="text" class="form-control" name="mobile_no" value="{{@$user->mobile_no}}"/>
+                        <input type="text" class="form-control" name="mobile_no" value="{{ @$user->mobile_no }}" />
                     </div>
 
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Country</label>
-                        <input type="text" class="form-control" name="country" value="{{@$user->country}}"/>
+                        <input type="text" class="form-control" name="country" value="{{ @$user->country }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner State</label>
-                        <input type="text" class="form-control" name="state" value="{{@$user->state}}"/>
+                        <input type="text" class="form-control" name="state" value="{{ @$user->state }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner City</label>
-                        <input type="text" class="form-control" name="city" value="{{@$user->city}}"/>
+                        <input type="text" class="form-control" name="city" value="{{ @$user->city }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Pin</label>
-                        <input type="text" class="form-control" name="pin" value="{{@$user->pin}}"/>
+                        <input type="text" class="form-control" name="pin" value="{{ @$user->pin }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner DOB</label>
-                        <input type="date" class="form-control" name="dob" value="{{@$user->dob}}"/>
+                        <input type="date" class="form-control" name="dob" value="{{ @$user->dob }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Partner Occupation</label>
-                        <input type="text" class="form-control" name="occupation" value="{{@$user->occupation}}"/>
+                        <input type="text" class="form-control" name="occupation"
+                            value="{{ @$user->occupation }}" />
                     </div>
                 </div>
             </div>
@@ -81,47 +83,65 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                       <p class="h6 fw-bold my-2">Business Details</p>
+                        <p class="h6 fw-bold my-2">Business Details</p>
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Firm name</label>
-                        <input type="text" class="form-control" name="firm_name" value="{{@$user->partner->firm_name}}"/>
+                        <input type="text" class="form-control" name="firm_name"
+                            value="{{ @$user->partner->firm_name }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">Pan</label>
-                        <input type="text" class="form-control" name="firm_pan" value="{{@$user->partner->firm_pan}}"/>
+                        <input type="text" class="form-control" name="firm_pan"
+                            value="{{ @$user->partner->firm_pan }}" />
                     </div>
                     <div class="col-4 mb-2">
                         <label class="form-label">GST</label>
-                        <input type="text" class="form-control" name="firm_gst" value="{{@$user->partner->firm_gst}}"/>
+                        <input type="text" class="form-control" name="firm_gst"
+                            value="{{ @$user->partner->firm_gst }}" />
                     </div>
-                    <div class="col-4 mb-2">
+                    <div class="col-3 mb-2">
                         <label class="form-label">City</label>
+
                         <select name="city" id="city" class="form-control">
                             <option value="" selected>Select City</option>
-                            <option value="Delhi"  {{@$user->partner->city == 'Delhi' ? 'selected': ''}}>Delhi</option>
-                            <option value="Hyderabad" {{@$user->partner->city == 'Hyderabad' ? 'selected': ''}}>Hyderabad</option>
-                            <option value="Bangalore" {{@$user->partner->city == 'Bangalore' ? 'selected': ''}}>Bangalore</option>
-                            <option value="Pune" {{@$user->partner->city == 'Pune' ? 'selected': ''}}>Pune</option>
-                            <option value="Thane" {{@$user->partner->city == 'Thane' ? 'selected': ''}}>Thane</option>
-                            <option value="Gurgaon" {{@$user->partner->city == 'Gurgaon' ? 'selected': ''}}>Gurgaon</option>
-                            <option value="Gaziabad" {{@$user->partner->city == 'Gaziabad' ? 'selected': ''}}>Gaziabad</option>
-                            <option value="Lucknow" {{@$user->partner->city == 'Lucknow' ? 'selected': ''}}>Lucknow</option>
-                            <option value="Faridabad" {{@$user->partner->city == 'Faridabad' ? 'selected': ''}}>Faridabad</option>
-                            <option value="Mumbai" {{@$user->partner->city == 'Mumbai' ? 'selected': ''}}>Mumbai</option>
+
+                            @foreach ($cities as $cit_y)
+                                <option value="{{ $cit_y->id }}"
+                                    {{ @$user->partner->city == $cit_y->id ? 'selected' : '' }}>
+                                    {{ $cit_y->city_name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
-                    <div class="col-4 mb-2">
-                        <label class="form-label">Official Company Address</label>
-                        <input type="text" class="form-control" name="official_company_address" value="{{@$user->partner->Official_Company_Address}}"/>
+                    <div class="col-3 mb-2">
+                        <label class="form-label">Areas of the City</label>
+
+                        <select name="sub_city_id" id="sub_city" class="form-control">
+                            <option value="" selected>Select sub City</option>
+
+                            @foreach ($subcities as $subcit_y)
+                                <option value="{{ $subcit_y->id }}"
+                                    {{ @$user->partner->sub_city_id == $subcit_y->id ? 'selected' : '' }}>
+                                    {{ $subcit_y->sub_city_name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-4 mb-2">
+                    <div class="col-3 mb-2">
+                        <label class="form-label">Official Company Address</label>
+                        <input type="text" class="form-control" name="official_company_address"
+                            value="{{ @$user->partner->Official_Company_Address }}" />
+                    </div>
+                    <div class="col-3 mb-2">
                         <label class="form-label">How many years you have been this line</label>
-                        <input type="text" class="form-control" name="how_many_years" value="{{@$user->partner->how_many_years}}"/>
+                        <input type="text" class="form-control" name="how_many_years"
+                            value="{{ @$user->partner->how_many_years }}" />
                     </div>
                     <div class="col-12 mb-2">
                         <label class="form-label">Partner Portfolio link</label>
-                        <input type="text" class="form-control" name="partnerportfolio" value="{{@$user->partner->partnerportfolio}}"/>
+                        <input type="text" class="form-control" name="partnerportfolio"
+                            value="{{ @$user->partner->partnerportfolio }}" />
                     </div>
                     <div class="col-12 mb-2">
                         <label class="form-label">Your Line Of Work
@@ -129,102 +149,101 @@
                         <div class="row">
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" 
-                                    @if (!@empty(($user->partner->major_category)))
-                                        @foreach (explode(",",$user->partner->major_category) as $item)
-                                            {{$item == 'Architect' ? 'checked': ''}}
-                                        @endforeach
-                                    @endif name="major_category[]" value="Architect" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                            {{ $item == 'Architect' ? 'checked' : '' }}
+                                        @endforeach @endif
+                                        name="major_category[]" value="Architect" />
                                     <label for="" class="major_category">Architect</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Interior Designer' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Interior Designer" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Interior Designer' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Interior Designer" />
                                     <label for="" class="major_category">Interior Designer</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == '3D Designer' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="3D Designer" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == '3D Designer' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="3D Designer" />
                                     <label for="" class="major_category">3D Designer</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Civil & Structure' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Civil & Structure" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Civil & Structure' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Civil & Structure" />
                                     <label for="" class="major_category">Civil & Structure</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'HVAC' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="HVAC" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'HVAC' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="HVAC" />
                                     <label for="" class="major_category">HVAC</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Plumbing' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Plumbing" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Plumbing' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Plumbing" />
                                     <label for="" class="major_category">Plumbing</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Electrical' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Electrical" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Electrical' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Electrical" />
                                     <label for="" class="major_category">Electrical</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Contractor' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Contractor" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Contractor' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Contractor" />
                                     <label for="" class="major_category">Contractor</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",",$user->partner->major_category) as $item)
-                                        {{$item == 'Painting' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Painting" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Painting' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Painting" />
                                     <label for="" class="major_category">Painting</label>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4 mb-3">
                                 <div class="radio-label-btn">
-                                    <input type="checkbox" @if (!@empty(($user->partner->major_category)))
-                                    @foreach (explode(",", $user->partner->major_category) as $item)
-                                        {{$item == 'Others' ? 'checked': ''}}
-                                    @endforeach
-                                @endif name="major_category[]" value="Others" />
+                                    <input type="checkbox"
+                                        @if (!@empty($user->partner->major_category)) @foreach (explode(',', $user->partner->major_category) as $item)
+                                        {{ $item == 'Others' ? 'checked' : '' }}
+                                    @endforeach @endif
+                                        name="major_category[]" value="Others" />
                                     <label for="" class="major_category">Others</label>
                                 </div>
                             </div>
@@ -236,28 +255,38 @@
                         <div class="row">
                             <div class="col-md-6 mb-1">
                                 <div class="radio-label-btn">
-                                    <input type="radio" name="minor_category" value="Small Firm ( Upto 5 employees)" {{@$user->partner->minor_category == 'Small Firm ( Upto 5 employees)' ? 'checked':'' }}>
-                                    <label for="" class="minor_category">Small Firm ( Upto 5 employees)</label>
+                                    <input type="radio" name="minor_category"
+                                        value="Small Firm ( Upto 5 employees)"
+                                        {{ @$user->partner->minor_category == 'Small Firm ( Upto 5 employees)' ? 'checked' : '' }}>
+                                    <label for="" class="minor_category">Small Firm ( Upto 5
+                                        employees)</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6 mb-1">
                                 <div class="radio-label-btn">
-                                    <input type="radio" name="minor_category" value="Mid Size to Large Firm ( More than 5 employees)" {{@$user->partner->minor_category == 'Mid Size to Large Firm ( More than 5 employees)' ? 'checked':'' }}>
-                                    <label for="" class="minor_category">Mid Size to Large Firm ( More than 5 employees)</label>
+                                    <input type="radio" name="minor_category"
+                                        value="Mid Size to Large Firm ( More than 5 employees)"
+                                        {{ @$user->partner->minor_category == 'Mid Size to Large Firm ( More than 5 employees)' ? 'checked' : '' }}>
+                                    <label for="" class="minor_category">Mid Size to Large Firm ( More than 5
+                                        employees)</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6 mb-1">
                                 <div class="radio-label-btn">
-                                    <input type="radio" name="minor_category" {{@$user->partner->minor_category == 'Employee' ? 'checked':'' }} value="Employee">
+                                    <input type="radio" name="minor_category"
+                                        {{ @$user->partner->minor_category == 'Employee' ? 'checked' : '' }}
+                                        value="Employee">
                                     <label for="" class="minor_category">Employee</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6 mb-1">
                                 <div class="radio-label-btn">
-                                    <input type="radio" name="minor_category" {{@$user->partner->minor_category == 'Freelancer' ? 'checked':'' }} value="Freelancer">
+                                    <input type="radio" name="minor_category"
+                                        {{ @$user->partner->minor_category == 'Freelancer' ? 'checked' : '' }}
+                                        value="Freelancer">
                                     <label for="" class="minor_category">Freelancer</label>
                                 </div>
                             </div>
@@ -272,6 +301,53 @@
             </div>
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+            // When the city dropdown changes
+            $('#city').change(function() {
+                var cityId = $(this).val(); // Get selected city ID
+
+                if (cityId) {
+                    // Make an AJAX request to fetch the sub-cities for the selected city
+                    $.ajax({
+                        url: '/get-sub-cities/' + cityId, // Define your route here
+                        type: 'GET',
+                        data: {
+                            city_id: cityId,
+                            _token: '{{ csrf_token() }}' // CSRF token for security
+                        },
+                        success: function(response) {
+                            console.log('response', response);
+                            console.log('subCities', response.subcities);
+                            
+                            
+                            // var subCities = response.subcities;
+                            var subCitySelect = $('#sub_city');
+                            subCitySelect.empty(); // Clear existing options
+                            subCitySelect.append(
+                                '<option value="">Select Sub-City</option>'); // Default option
+
+                            // Populate sub-city dropdown with the received data
+                            response.subCities.forEach(function(subCity) {
+                                subCitySelect.append(
+                                    '<option value="' + subCity.id + '">' +
+                                    subCity.sub_city_name + '</option>'
+                                );
+                            });
+
+                        },
+                        error: function(error) {
+                            console.error("Error fetching sub-cities:", error);
+                        }
+                    });
+                } else {
+                    // If no city is selected, reset the sub-city dropdown
+                    $('#sub_city').empty();
+                    $('#sub_city').append('<option value="">Select Sub-City</option>');
+                }
+            });
+        });
+    </script>
 </div>
 
 

@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\TestimonialsController;
 use App\Http\Controllers\Admin\ContactusController;
 use App\Http\Controllers\Admin\AboutusController;
+use App\Http\Controllers\Admin\PartnerServiceCityController;
+// use App\Http\Controllers\Admin\PartnerServiceCityController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\HomeBannerController;
@@ -103,7 +105,7 @@ Route::controller(AuthOtpController::class)->group(function(){
     Route::post('/validate-mobile-number', 'validate_mobile_number')->name('validatemobilenumber');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin.guest'], function () {
         // Your admin login route goes here
         Route::get('/login', [AdminAuthController::class, 'getLogin'])->name('adminLogin');
@@ -231,9 +233,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/enquries-status/{id}', [EnquriesController::class, 'statuschnage'])->name('enquriesstatus');
 
         Route::post('/enquries-export-data', [EnquriesController::class, 'enquriesexport'])->name('enquriesexport_data');
+        Route::resource('/service-cities', PartnerServiceCityController::class);
 
     });
 });
+// Route to get sub-cities based on the selected city
+Route::get('/get-sub-cities/{cityId}', [HomeController::class, 'getSubCities']);
 
 Auth::routes();
 

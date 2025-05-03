@@ -366,6 +366,8 @@ function validatePartnerForm(currentStep) {
           var firm_gst = $("#firm_gst").val();
           var firm_start_date = $("#firm_start_date").val();
           var city = $("#city").val();
+          var sub_city = $("#sub_city").val();
+          var how_many_years = $("#how_many_years").val();
 
           if (full_name == '') {
                Swal.fire({
@@ -442,6 +444,16 @@ function validatePartnerForm(currentStep) {
                     icon: "error",
                     title: "Oops...",
                     text: "Please select your city!",
+                    footer: ''
+               });
+               return false;
+          }
+
+          if (sub_city == '') {
+               Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Please select your areas!",
                     footer: ''
                });
                return false;

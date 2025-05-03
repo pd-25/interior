@@ -8,7 +8,7 @@
                             <li>
                                 <a href="{{ route('adminDashboard') }}">
                                     <i data-feather="home"></i>
-                                    <span>Dashboards</span>
+                                    <span>Dashboard</span>
                                 </a>
                             </li>
                             <li class="menu-title mt-2"></li>
@@ -55,7 +55,13 @@
                                     </ul>
                                 </div>
                             </li>
-
+                            <li>
+                                <a href="{{ route('service-cities.index') }}">
+                                    <i data-feather="map-pin"></i>
+                                    <span> Cities</span>
+                                </a>
+                            </li>
+                            
                             <li>
                                 <a href="#users" data-bs-toggle="collapse">
                                     <i data-feather="users"></i>
